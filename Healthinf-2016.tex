@@ -20,11 +20,16 @@
 
 \title{MoBio - A mobile system for collecting electrophysiological data\subtitle{Preparation of Camera-Ready Contributions to SCITEPRESS Proceedings} }
 
-\author{\authorname{First Author Name\sup{1}, Second Author Name\sup{1} and Third Author Name\sup{2}}
-\affiliation{\sup{1}Institute of Problem Solving, XYZ University, My Street, MyTown, MyCountry}
-\affiliation{\sup{2}Department of Computing, Main University, MySecondTown, MyCountry}
-\email{\{f\_author, s\_author\}@ips.xyz.edu, t\_author@dc.mu.edu}
-}
+\author{\authorname{Petr Je\v{z}ek\sup{1} and Roman Mou\v{c}ek\sup{1}}
+\affiliation{\sup{1}New Technologies for the Information Society, 
+              Department of Computer Science and Engineering,
+              Faculty of Applied Sciences,
+              University of  West Bohemia,
+              Univerzitn\'{i} 8,
+              306 14  Plze\v{n},
+              Czech Republic}
+\email{jezekp@ntis.zcu.cz, moucek@kiv.zcu.cz}
+}   
 
 \keywords{The paper must have at least one keyword. The text must be set to 9-point font size and without the use of bold or italic font style. For more than one keyword, please use a comma as a separator. Keywords must be titlecased.}
 
@@ -36,13 +41,18 @@
 \label{sec:introduction}
 
 \noindent 
-There are lot of factors affecting human health. Factors such as genetics, environmental influence or internal state of an individual cannot be easy measured. On the other hands there are factors as blood pressure, glucose level or heart rate that can be measured relatively easy, non invasive by cheep sensors. However electrophysiological experiments have been conducted in laboratories equipped by common desktop computers and non-transferable measuring devices. Fortunately situation is rapidly changing in these days. The reason is increasing popularity of smart devices as phones or tablets. According to eMarketer \cite{emarketer} two billions of people will own a smart-phone in 2016. Simultaneously a lot of relatively cheap sensors for measurement of potentials from the human body is available on the market. These sensors provide data using wireless transfer. These data can be easy read and processed by smart phones. The obtained data can be used by two fundamental intersecting ways. 
+There are lot of factors affecting human health. Factors such as genetics, environmental influence or internal state of an individual cannot be easy measured. On the other hands there are factors as blood pressure, glucose level or heart rate that can be measured relatively easy, non-invasively by cheap sensors. For a long time electrophysiological experiments have been conducted in laboratories equipped by common desktop computers and non-transferable measuring devices. Fortunately situation is rapidly changing in these days. The one of reasons is increasing popularity of smart devices as phones or tablets. According to eMarketer \cite{emark} two billions of people will own a smart-phone in 2016. Simultaneously a lot of relatively cheap sensors for measurement of potentials from the human body is available on the market. These sensors often transfer data wirelessly, it means they can be easily read and processed by smart devices. The obtained data can be used by two fundamental intersecting ways. 
 
 The first assistive technology approach serves to stimulating, maintaining or improving functional capabilities of people with special needs including disabled people or aging population. Getting independence and self-sufficiency increases quality of life in general. 
 
-The second approach is focused on sportsmen or active living population. It is based on a monitoring of persons when they are performing specific activities (e. g. running or long distance walking). The data are used to display the current status and a long term monitoring of the fitness level. 
+The second approach is focused on sportsmen or actively living people. Measurements are based on a monitoring of persons when they are performing specific activities (e. g. running or long distance walking). The data are used to display the current status and a long term monitoring of the fitness level. 
 
 
+\section{\uppercase{state of the art}}
+\label{sec:state-of-the-art}
+
+\noindent
+We operate a complete equipped laboratory \cite{10.3389/fninf.2014.00020} for measurement of electrophysiological activity of human body. We are focused mainly on Electroencephalography (EEG) and Event-related potentials (ERP). Except of the fixed equipment we have also so-called mobile laboratory including set of laptops and portable measuring devices enabling performing experiments out of the laboratory. When neuroinformatics community identified problems with long-term description, storage and management of experimental data/metadata we are being developing a system for long term storage and management of EEG/ERP experiments - EEGBase. A mobile EEG-Base client is a supplementary Android tool that enables collecting experiments out of the laboratory and provides an online synchronization with EEGBase.
 
 
 \section{\uppercase{Manuscript Preparation}}
@@ -348,7 +358,7 @@ without numbering. To do so please use the following command:
 \vfill
 \bibliographystyle{apalike}
 {\small
-\bibliography{citations-healthinf-2016}}
+\bibliography{citations-healthinf-2016,frontiers}}
 
 
 \section*{\uppercase{Appendix}}
