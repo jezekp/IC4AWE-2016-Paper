@@ -1,8 +1,6 @@
 \documentclass[a4paper,twoside]{article}
 
 \usepackage{epsfig}
-\usepackage{subfigure}
-\usepackage{calc}
 \usepackage{amssymb}
 \usepackage{amstext}
 \usepackage{amsmath}
@@ -10,11 +8,23 @@
 \usepackage{multicol}
 \usepackage{pslatex}
 \usepackage{apalike}
-\usepackage{SCITEPRESS}     % Please add other packages that you may need BEFORE the SCITEPRESS.sty package.
+\usepackage{SCITEPRESS}
 
-\subfigtopskip=0pt
-\subfigcapskip=0pt
-\subfigbottomskip=0pt
+
+
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{flushend}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{amsmath}
+
+\usepackage{floatrow}
+
+
+\lstset{breaklines=true}
 
 \begin{document}
 
@@ -63,28 +73,42 @@ While Microsoft Kinect is designed for the indoor use all other devices are desi
 
 Available tools and sensors are usually designed for one specific activity. They are able to record only limited variety of data. In addition, due to proprietary structure they do not provide variability for integration with other systems. 
 
-Neuroinformatics community identified problems with a long-term description, storage and management of experimental data/metadata \cite{CRCNS}. As a member of International Neuroinformatics Coordinating Facility (INCF) \cite{INCF} we are being developing a system for long term storage and management of EEG/ERP experiments - EEGBase \cite{ISI:000306821100004}. A mobile EEG-Base client \cite{10.3389/conf.fninf.2013.09.00046} is a supplementary Android tool that enables collecting experiments out of the laboratory and provides an on-line synchronization with EEGBase.
+Moreower, neuroinformatics community identified problems with a long-term description, storage and management of experimental data/metadata \cite{CRCNS}. As a member of International Neuroinformatics Coordinating Facility (INCF) \cite{INCF} we are being developing a system for long term storage and management of EEG/ERP experiments - EEGBase \cite{ISI:000306821100004}. A mobile EEG-Base client \cite{10.3389/conf.fninf.2013.09.00046} is a supplementary Android tool that enables collecting experiments out of the laboratory and provides an on-line synchronization with EEGBase.
 
-Presented prototype solves described problems by designing a mobile system relying on standardized terminology describing sensors data. These terminology is implemented in an embedded database. The mobile system ensured the outdoor usage or the usage in environments without the Internet connectivity. When the client gets on-line the stored data are synchronized with EEGBase.
+\section{\uppercase{Mobile application prototype}}
+\label{mobile_app_prototype}
 
-\section{\uppercase{Manuscript Preparation}}
 
-\noindent We strongly encourage authors to use this document for the
-preparation of the camera-ready. Please follow the instructions
-% closely in order to make the volume look as uniform as possible
-\cite{Moore99}.
+\subsection{System Scope}
+As a solution we present prototype solves described problems by designing a mobile system relying on standardized terminology describing sensors data. These terminology is implemented in an embedded database. The mobile system ensured the outdoor usage or the usage in environments without the Internet connectivity. When the client gets on-line the stored data are synchronized with EEGBase. Such a system aggregates data from various sensors in one place. Moreover, the data stored in flexible data storage on the server can be used both by human reared or processed by automatic readers.
 
-Please remember that all the papers must be in English and without
-orthographic errors.
+\subsection{\uppercase{Topology and Data Transfer}}
+\label{topology_data_transfer}
 
-Do not add any text to the headers (do not set running heads) and
-footers, not even page numbers, because text will be added
-electronically.
+\noindent 
+Sensors uses different way to manipulate with data. Some sensors have own display or internal memory for storing measured data these data can be transfered later. These devices usually provides a complete history of stored measurements. On the other hands devices such as heart rate meters do not have internal memory that is why data can be transfered only in time of measurement. According to way of data distribution we defined three levels of topologies.
 
-For a best viewing experience the used font must be Times New
-Roman, except on special occasions, such as program code
-\ref{subsubsec:program_code}.
+\begin{itemize}
+ \item one-layer - The sensor is a stand-alone unit with controls, display and memory. Such a sensor can be completely controlled without any connections to a remote system.   
+ \item two-layers - Sensor only measures the data. This data sends to a remote system. This system can be a common computer/laptop or smart phone/watch etc. 
+ \item three-layers - This topology adds a cloud service to the two-layers topology. Data are send to the server where they are analyzed. 
+\end{itemize}
 
+
+
+
+\begin{figure*}
+% Use the relevant command to insert your figure file.
+% For example, with the graphicx package use
+\begin{tabular}{c}
+\subfloat[List of available sensors]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture.PNG}\label{fig:capture_a}}
+\hspace{10pt}\subfloat[Current heart rate]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture3.PNG}\label{fig:capture_b}}
+\hspace{10pt}\subfloat[Long term heart rate]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture2.PNG}\label{fig:capture_c}}
+\end{tabular}
+% figure caption is below the figure
+\caption{Mobile Application Preview}
+\label{fig:mob_app_prev}
+\end{figure*}   
 
 \subsection{Manuscript Setup}
 
