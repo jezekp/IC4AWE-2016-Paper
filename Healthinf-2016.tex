@@ -97,23 +97,19 @@ There are lot of sensors in one-layer topology including various glucometers, to
 
 
 \subsection{System Scope}
+
 On the basis of difficulties with close-source dedicated devices we present a prototype of a mobile system that solves described problems by designing a mobile system relying on a standardized terminology describing sensors data. These terminology is implemented in an embedded database. The mobile system ensures the outdoor usage or the usage in environments without the Internet connectivity. When the client gets on-line the stored data are synchronized with EEGBase. Such a system aggregates data from various sensors in one place. Moreover, the data stored in a flexible data storage on the server can be used by human reared or processed by automatic readers.
 
 \subsection{Format Selection}
 
-\subsection{User Interface}
+Existing data formats are based on different levels of abstraction from low-level binary formats, through highly abstract implementation-independent data formats to formats based on semantic web ontologies. We require a format that provides a sufficient level of abstraction to be system independent on one hand, but it should be easy-to-use without any specific requirements for user's knowledge on the other hand.
 
-\subsection{Integration with EEGBase}
+When the aim of the tool is to support large collections of sensors it must store data in a flexible data format. Moreover, we prefer open-source formats supported and accepted by large neuroscience community. So far, the working group entertains two approaches towards defining a standard, which may eventually be merged \cite{10.3389/conf.fninf.2013.09.00069}. Both formats are maintained by The INCF Task Forces on Electrophysiology\footnote{http://www.incf.org/programs/datasharing/electrophysiology-task-force} The first one Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF that is specialized HDF5 for electrophysiology. The second one NIX \cite{Stoewer:2014}  provides a data model for storing experimental data in HDF5, together with metadata in the odML format \cite{10.3389/fninf.2011.00016}. The odML format brings the advantages of platform-independence and simplicity and human-readability.  we selected odML as a suitable format for presented tool because it ensures a compatibility with other systems developed in neurionfiormatics community.
 
-\section{Discussion}
-\label{discussion}
+\subsection{Implementation}
+The elementary functionality of the system provides a registration form including except basic information such as name or email information such as gender, weight, tallness, current fitness level etc. 
 
-\noindent
-
-\section{Future Work}
-\label{future-work}
-
-\noindent
+Figure \ref{fig:mob_app_prev} shows one use case. The registered user can list supported devices. Figure \ref{fig:capture_a} shows list with one registered device - Garmin Heart Rate Sensor. Currently for a proof of concept implementation we support limited set of devices produced by Garmin, Fora or eVito. These devices supports either Bluetooth nor ANT transfer. When the device is paired then the user can transfer the data. Current heart rate is shown in Figure \ref{fig:capture_b}. When the user starts measurements data are continuously stored in the device and a chart is visualized on-line as shown in Figure \ref{fig:capture_c}.
 
 
 \begin{figure*}
@@ -129,6 +125,40 @@ On the basis of difficulties with close-source dedicated devices we present a pr
 \label{fig:mob_app_prev}
 \end{figure*}   
 
+\subsection{Integration with EEGBase}
+
+\section{Discussion}
+\label{discussion}
+\noindent
+
+\begin{table*}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Internal\\  sensors\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}External\\ sensors\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Continuous\\  measurements\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Single\\  measurements\end{tabular}} & \multicolumn{1}{l|}{Statistics} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Cloud\\ Service\end{tabular}} & \multicolumn{1}{l|}{Design} \\ \hline
+MoBio          &                                                                                  & 4                                                                               & \textbullet                                                                                        &  \textbullet                                                                                   & \textbullet                                & \textbullet                                  &                             \\ \hline
+Endomondo      & 2                                                                                & 3                                                                               & \textbullet                                                                                        &                                                                                     & \textbullet                                & \textbullet                                  & +                           \\ \hline
+Runstatic      & 2                                                                                & 2                                                                               & \textbullet                                                                                        &                                                                                     & \textbullet                                & \textbullet                                 & +                           \\ \hline
+Pedometer      & 1                                                                                &                                                                                 & \textbullet                                                                                        &                                                                                     & \textbullet                                & \textbullet                                  & -                           \\ \hline
+Push-ups       & 1                                                                                &                                                                                 & \textbullet                                                                                        &                                                                                     & \textbullet                                & \textbullet                                  & +                           \\ \hline
+Heart rate     & 1                                                                                &                                                                                 &                                                                                         & \textbullet                                                                                    & \textbullet                                & \textbullet                                  & +                           \\ \hline
+Sport Tracker  & 1                                                                                & 2                                                                               & \textbullet                                                                                        &                                                                                     & \textbullet                                & \textbullet                                  & +                           \\ \hline
+Health Tracker &                                                                                  &                                                                                 &                                                                                         &                                                                                     & \textbullet                                &                                   & -                           \\ \hline
+Madbarz        &                                                                                  &                                                                                 &                                                                                         &                                                                                     & \textbullet                                & \textbullet                                  & +                           \\ \hline
+\end{tabular}
+\end{table*}
+-- Popisi usb a ant profily, podporovana zarizeni + problemy s formaty ant+ profily apod, tabulka srovnani s konkurenci, popisi navrzeny format
+
+\section{Future Work}
+\label{future-work}
+
+\noindent
+
+
+
+
 \section{\uppercase{Conclusions}}
 \label{sec:conclusion}
 
@@ -143,7 +173,7 @@ Will be added in CR version
 \vfill
 \bibliographystyle{apalike}
 {\small
-\bibliography{citations-healthinf-2016,frontiers,bibliography}
+\bibliography{citations-healthinf-2016,frontiers,bibliography,neuroportals}
 
 
 \vfill
