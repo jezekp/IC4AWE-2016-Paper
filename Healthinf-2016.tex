@@ -75,14 +75,8 @@ Available tools and sensors are usually designed for one specific activity. They
 
 Moreower, neuroinformatics community identified problems with a long-term description, storage and management of experimental data/metadata \cite{CRCNS}. As a member of International Neuroinformatics Coordinating Facility (INCF) \cite{INCF} we are being developing a system for long term storage and management of EEG/ERP experiments - EEGBase \cite{ISI:000306821100004}. A mobile EEG-Base client \cite{10.3389/conf.fninf.2013.09.00046} is a supplementary Android tool that enables collecting experiments out of the laboratory and provides an on-line synchronization with EEGBase.
 
-\section{\uppercase{Mobile application prototype}}
-\label{mobile_app_prototype}
 
-
-\subsection{System Scope}
-As a solution we present a prototype that solves described problems by designing a mobile system relying on a standardized terminology describing sensors data. These terminology is implemented in an embedded database. The mobile system ensured the outdoor usage or the usage in environments without the Internet connectivity. When the client gets on-line the stored data are synchronized with EEGBase. Such a system aggregates data from various sensors in one place. Moreover, the data stored in a flexible data storage on the server can be used by human reared or processed by automatic readers.
-
-\subsection{\uppercase{Topology and Data Transfer}}
+\section{\uppercase{Topologies and Data Transfer}}
 \label{topology_data_transfer}
 
 \noindent 
@@ -94,7 +88,32 @@ Sensors use different way to manipulate data. Some sensors have own display or i
  \item three-layers - This topology adds a cloud service to the two-layers topology. Data are send to the server where they are analyzed. 
 \end{itemize}
 
-There are lot of sensors in one-layer topology including various glucometers, tonometers, stepcounters etc. These devices usually enables easy manipulation does not require connection to any other system. Anyway the data are stored in proprietary storage that do not provide menans for communication with other systems. Some sensors including heart rate belts or some step counters do not have own display. Data are usually displayed on a smart device screen. Because of limited performance of mobile devices only a basic data processing is provided. There is few exceptions as BlibCare tonometer equiped by WiFi. It enables dirrect data tranfer to a server using home network. 
+There are lot of sensors in one-layer topology including various glucometers, tonometers, stepcounters etc. These devices usually enables easy manipulation and do not require connection to any other system. Anyway the data are stored in proprietary storage that do not provide means for communication with other systems. Some sensors including heart rate belts or some step counters do not have own display. Data are usually displayed on a smart device screen. Because of limited performance of mobile devices only a basic data processing is provided. There is few exceptions as BlibCare tonometer equipped by WiFi. It enables a direct data transfer to a server using home network. 
+
+
+
+\section{\uppercase{Mobile application prototype}}
+\label{mobile_app_prototype}
+
+
+\subsection{System Scope}
+On the basis of difficulties with close-source dedicated devices we present a prototype of a mobile system that solves described problems by designing a mobile system relying on a standardized terminology describing sensors data. These terminology is implemented in an embedded database. The mobile system ensures the outdoor usage or the usage in environments without the Internet connectivity. When the client gets on-line the stored data are synchronized with EEGBase. Such a system aggregates data from various sensors in one place. Moreover, the data stored in a flexible data storage on the server can be used by human reared or processed by automatic readers.
+
+\subsection{Format Selection}
+
+\subsection{User Interface}
+
+\subsection{Integration with EEGBase}
+
+\section{Discussion}
+\label{discussion}
+
+\noindent
+
+\section{Future Work}
+\label{future-work}
+
+\noindent
 
 
 \begin{figure*}
