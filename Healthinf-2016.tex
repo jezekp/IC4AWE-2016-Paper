@@ -28,7 +28,7 @@
 
 \begin{document}
 
-\title{MoBio - A mobile system for collecting electrophysiological data\subtitle{Preparation of Camera-Ready Contributions to SCITEPRESS Proceedings} }
+\title{MoBio\subtitle{A mobile system for collecting electrophysiological data} }
 
 \author{\authorname{Petr Je\v{z}ek\sup{1} and Roman Mou\v{c}ek\sup{1}}
 \affiliation{\sup{1}New Technologies for the Information Society, 
@@ -73,7 +73,7 @@ While Microsoft Kinect is designed for the indoor use all other devices are desi
 
 Available tools and sensors are usually designed for one specific activity. They are able to record only limited variety of data. In addition, due to proprietary structure they do not provide variability for integration with other systems. 
 
-Moreower, neuroinformatics community identified problems with a long-term description, storage and management of experimental data/metadata \cite{CRCNS}. As a member of International Neuroinformatics Coordinating Facility (INCF) \cite{INCF} we are being developing a system for long term storage and management of EEG/ERP experiments - EEGBase \cite{ISI:000306821100004}. A mobile EEG-Base client \cite{10.3389/conf.fninf.2013.09.00046} is a supplementary Android tool that enables collecting experiments out of the laboratory and provides an on-line synchronization with EEGBase.
+Moreower, neuroinformatics community identified problems with a long-term description, storage and management of experimental data/metadata \cite{CRCNS}. As a member of International Neuroinformatics Coordinating Facility (INCF) \cite{INCF} we are being developing a system for long term storage and management of EEG/ERP experiments - EEGBase \cite{ISI:000306821100004}. A mobile EEG-Base client \cite{10.3389/conf.fninf.2013.09.00046} is a supplementary tool that enables collecting experiments out of the laboratory and provides an on-line synchronization with EEGBase.
 
 
 \section{\uppercase{Topologies and Data Transfer}}
@@ -104,15 +104,20 @@ On the basis of difficulties with close-source dedicated devices we present a pr
 
 Existing data formats are based on different levels of abstraction from low-level binary formats, through highly abstract implementation-independent data formats to formats based on semantic web ontologies. We require a format that provides a sufficient level of abstraction to be system independent on one hand, but it should be easy-to-use without any specific requirements for user's knowledge on the other hand.
 
-When the aim of the tool is to support large collections of sensors it must store data in a flexible data format. Moreover, we prefer open-source formats supported and accepted by large neuroscience community. So far, the working group entertains two approaches towards defining a standard, which may eventually be merged \cite{10.3389/conf.fninf.2013.09.00069}. Both formats are maintained by The INCF Task Forces on Electrophysiology\footnote{http://www.incf.org/programs/datasharing/electrophysiology-task-force} The first one Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF that is specialized HDF5 for electrophysiology. The second one NIX \cite{Stoewer:2014}  provides a data model for storing experimental data in HDF5, together with metadata in the odML format \cite{10.3389/fninf.2011.00016}. The odML format brings the advantages of platform-independence and simplicity and human-readability.  we selected odML as a suitable format for presented tool because it ensures a compatibility with other systems developed in neurionfiormatics community.
+When the aim of the tool is to support large collections of sensors it must store data in a flexible data format. Moreover, we prefer open-source formats supported and accepted by large neuroscience community. So far, the working group entertains two approaches towards defining a standard, which may eventually be merged \cite{10.3389/conf.fninf.2013.09.00069}. Both formats are maintained by The INCF Task Forces on Electrophysiology\footnote{http://www.incf.org/programs/datasharing/electrophysiology-task-force} The first one Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF that is specialized HDF5 for electrophysiology. The second one NIX \cite{Stoewer:2014}  provides a data model for storing experimental data in HDF5, together with metadata in the odML format \cite{10.3389/fninf.2011.00016}. The odML format brings the advantages of platform-independence and simplicity and human-readability.  we selected odML as a suitable format for presented tool because it ensures a compatibility with other systems developed in neuroinformatics community.
 
 \subsection{Implementation}
-The elementary functionality of the system provides a registration form including except basic information such as name or email information such as gender, weight, tallness, current fitness level etc. 
 
-Figure \ref{fig:mob_app_prev} shows one use case. The registered user can list supported devices. Figure \ref{fig:capture_a} shows list with one registered device - Garmin Heart Rate Sensor. Currently for a proof of concept implementation we support limited set of devices produced by Garmin, Fora or eVito. These devices supports either Bluetooth nor ANT transfer. When the device is paired then the user can transfer the data. Current heart rate is shown in Figure \ref{fig:capture_b}. When the user starts measurements data are continuously stored in the device and a chart is visualized on-line as shown in Figure \ref{fig:capture_c}.
+With regard to the use of open source technologies in maximal range we decided to implement system for Android platform. The main benefit of this selection is its availability on large collections of devices including both tablets and mobile phones. Moreover, there is lot of cheap devices on the market. 
+
+The presented proof of concept implementation provides basic functionality including management of user accounts,  support for a limited set of sensors, or long term storage and visualization of collected data.
+
+The registration form includes both basic information such as name or email and advanced information such as gender, weight, tallness, current fitness level etc. All these data are required because they affect results interpretations.
+
+The supported devices must enable either Bluetooth nor ANT transfer. In a current implementation we support limited set of devices produced by Garmin, Fora or eVito.  When the device is paired then the user can transfer the data. Figure \ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure \ref{fig:capture_a} shows list with one paired device - Garmin Heart Rate Sensor. Current heart rate is in Figure \ref{fig:capture_b}. When the user starts measurements data are continuously stored in the device and a chart is continuously plotted as shown in Figure \ref{fig:capture_c}.
 
 
-\begin{figure*}
+\begin{figure*}[th!]
 % Use the relevant command to insert your figure file.
 % For example, with the graphicx package use
 \begin{tabular}{c}
@@ -127,11 +132,15 @@ Figure \ref{fig:mob_app_prev} shows one use case. The registered user can list s
 
 \subsection{Integration with EEGBase}
 
+When data are collected they are stored on the device SD card. Although data are visualized directly on mobile phone screen they are simultaneously transfered to the server. Data on the server are stored for future processing.
+
+Technically EEGBase provide a RESTful API with methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered when the user is on-line or he/she can enforce upload manually.
+
 \section{Discussion}
 \label{discussion}
 \noindent
 
-\begin{table*}[]
+\begin{table*}[bh!]
 \centering
 \caption{My caption}
 \label{my-label}
