@@ -11,7 +11,8 @@
 \usepackage{SCITEPRESS}
 
 
-
+\usepackage{listings}
+\usepackage{xcolor}
 \usepackage{subfig}
 \usepackage{graphicx}
 \usepackage{epstopdf}
@@ -21,14 +22,49 @@
 \usepackage{multicol}
 \usepackage{amsmath}
 
+
 \usepackage{floatrow}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\scriptsize\ttfamily,
+    numbers=none,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=none,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
 
 
 \lstset{breaklines=true}
 
 \begin{document}
 
-\title{MoBio\subtitle{A mobile system for collecting electrophysiological data} }
+\title{MoBio\subtitle{A mobile system for collecting data from sensors} }
 
 \author{\authorname{Petr Je\v{z}ek\sup{1} and Roman Mou\v{c}ek\sup{1}}
 \affiliation{\sup{1}New Technologies for the Information Society, 
@@ -108,7 +144,7 @@ When the aim of the tool is to support large collections of sensors it must stor
 
 \subsection{Implementation}
 
-With regard to the use of open source technologies in maximal range we decided to implement system for Android platform. The main benefit of this selection is its availability on large collections of devices including both tablets and mobile phones. Moreover, there is lot of cheap devices on the market. 
+With regard to the use of open source technologies in maximal range we decided to implement the system for the Android platform. The main benefit of this selection is its availability on large collections of devices including both tablets and mobile phones. According to StatCounter\footnote{http://gs.statcounter.com} more then 60\% of devices are operated by Android.   Moreover, there is lot of cheap devices on the market, large community of developers and easy publication of applications. 
 
 The presented proof of concept implementation provides basic functionality including management of user accounts,  support for a limited set of sensors, or long term storage and visualization of collected data.
 
@@ -132,9 +168,67 @@ The supported devices must enable either Bluetooth nor ANT transfer. In a curren
 
 \subsection{Integration with EEGBase}
 
-When data are collected they are stored on the device SD card. Although data are visualized directly on mobile phone screen they are simultaneously transfered to the server. Data on the server are stored for future processing.
+When data are collected they are stored on the device SD card. Although data are visualized directly on mobile phone screen they are simultaneously transfered to the server. Data on the server are stored for future processing. EEGBase enables user to store, upload, download, and manage experimental data supplemented by metadata. Because of we are implementing an advanced system of user templates for different kind of metadata based on the odML format we use this template system also for data from sensors. 
 
-Technically EEGBase provide a RESTful API with methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered when the user is on-line or he/she can enforce upload manually.
+More specifically odML is  a free form tree-like structure of sections, properties and values so we can easy define one e. g. \emph{blood\_presure} as a section with several properties: \textit{systolic\_preasure}, \textit{diastolic\_presure}, \textit{mean\_presure}, \textit{heart\_rate}. Listing \ref{odml_example} shows a JSON representation of proposed data structure. The document is simplified to keep readibility. A complete document contains a complete set of properties describing the experiment.
+
+Technically EEGBase provide a RESTful API with methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered once the user gets on-line or he/she can enforce upload manually. The data on the server side are transfered to odML document that is stored in the Elasticsearch noSQL database.
+
+
+\begin{lstlisting}[language=json,caption=blood preasure examle, label=odml_example]
+{
+   "_index":"eegdatabase",
+   "_type":"experiment",
+   "_id":"167",
+   "_source":{
+      "experimentId":"167",
+      "params":[
+      ],
+      "userId":243,
+      "groupId":18,
+      "metadata":{
+         "odML":{
+            "date":"2015-07-03",
+            "xmlns:gui":"http://www.g-node.org/guiml",
+            "section":[
+               {
+                  "name":"blood_presure",
+                  "property":[
+                     {
+                        "name":"systolic_preasure",
+                        "value":{
+                           "type":"int",
+                           "content":80
+                        },
+                     },
+                     {
+                        "name":"dyastolic_presure",
+                        "value":{
+                           "type":"int",
+                           "content":60
+                        },
+                     },
+                        "name":"mean_preasure",
+                        "value":{
+                           "type":"int",
+                           "content":70
+                        },
+                     },
+                     {
+                        "name":"heart_preasure",
+                        "value":{
+                           "type":"int",
+                           "content":52
+                        },
+                     },
+                  ],
+                  "type":"blood_presure"
+               }
+            ],
+            "version":1
+         }       }   } }
+\end{lstlisting}
+
 
 \section{Discussion}
 \label{discussion}
