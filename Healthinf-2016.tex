@@ -172,7 +172,16 @@ When data are collected they are stored on the device SD card. Although data are
 
 More specifically odML is  a free form tree-like structure of sections, properties and values so we can easy define one e. g. \emph{blood\_presure} as a section with several properties: \textit{systolic\_preasure}, \textit{diastolic\_presure}, \textit{mean\_presure}, \textit{heart\_rate}. Listing \ref{odml_example} shows a JSON representation of proposed data structure. The document is simplified to keep readibility. A complete document contains a complete set of properties describing the experiment.
 
-Technically EEGBase provide a RESTful API with methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered once the user gets on-line or he/she can enforce upload manually. The data on the server side are transfered to odML document that is stored in the Elasticsearch noSQL database.
+Technically EEGBase provide a RESTful API with methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered once the user gets on-line or he/she can enforce upload manually. The data on the server side are transfered to odML document that is stored in the Elasticsearch noSQL database. On the server side data are visualized in the detail of experiment as shown in Figure \ref{fig:EEGBase}.
+
+
+\begin{figure}[!h]
+  %\vspace{-0.2cm}
+  \centering
+   {\epsfig{file = Materials/portal_example2.png, width = 8cm}}
+  \caption{Data stored in EEGBase}
+  \label{fig:EEGBase}
+ \end{figure}
 
 
 \begin{lstlisting}[language=json,caption=blood preasure examle, label=odml_example]
@@ -195,27 +204,27 @@ Technically EEGBase provide a RESTful API with methods for obtaining user's expe
                   "name":"blood_presure",
                   "property":[
                      {
-                        "name":"systolic_preasure",
+                        "name":"systolic",
                         "value":{
                            "type":"int",
                            "content":80
                         },
                      },
                      {
-                        "name":"dyastolic_presure",
+                        "name":"dyastolic",
                         "value":{
                            "type":"int",
                            "content":60
                         },
                      },
-                        "name":"mean_preasure",
+                        "name":"mean",
                         "value":{
                            "type":"int",
                            "content":70
                         },
                      },
                      {
-                        "name":"heart_preasure",
+                        "name":"heart_rate",
                         "value":{
                            "type":"int",
                            "content":52
