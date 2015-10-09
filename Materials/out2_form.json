@@ -1,0 +1,307 @@
+{
+                    "experimentId": "85",
+                    "groupId": 40,
+                    "metadata": {
+                        "odML": {
+                            "date": "2015-07-07",
+                            "section": [
+                                {
+                                    "name": "Experiment",
+                                    "property": [
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 0,
+                                            "gui:required": false,
+                                            "name": "private-experiment",
+                                            "value": {
+                                                "content": false,
+                                                "type": "boolean"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 1,
+                                            "gui:required": false,
+                                            "name": "start-time",
+                                            "value": {
+                                                "content": "0011-04-02 09:00:00",
+                                                "type": "datetime"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 2,
+                                            "gui:required": false,
+                                            "name": "end-time",
+                                            "value": {
+                                                "content": "0015-04-02 11:25:00",
+                                                "type": "datetime"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 3,
+                                            "gui:required": false,
+                                            "name": "temperature",
+                                            "value": {
+                                                "content": -51,
+                                                "type": "int"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 4,
+                                            "gui:required": false,
+                                            "name": "environment-note",
+                                            "value": {
+                                                "content": "velk\u00e1 vich\u0159ice",
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 5,
+                                            "gui:required": false,
+                                            "name": "research-group",
+                                            "value": {
+                                                "content": "Santal",
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 6,
+                                            "gui:required": false,
+                                            "name": "scenario-title",
+                                            "value": {
+                                                "content": "one cat",
+                                                "type": "string"
+                                            }
+                                        }
+                                    ],
+                                    "type": "experiment"
+                                },
+                                {
+                                    "name": "Subject",
+                                    "property": [
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 0,
+                                            "gui:required": false,
+                                            "name": "gender",
+                                            "value": {
+                                                "content": "M",
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 1,
+                                            "gui:required": false,
+                                            "name": "age",
+                                            "value": {
+                                                "content": 25,
+                                                "type": "int"
+                                            }
+                                        }
+                                    ],
+                                    "type": "person"
+                                },
+                                {
+                                    "name": "Weather",
+                                    "property": [
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 0,
+                                            "gui:required": false,
+                                            "name": "title",
+                                            "value": {
+                                                "content": "Sunny",
+                                                "type": "string"
+                                            }
+                                        }
+                                    ],
+                                    "type": "weather"
+                                },
+                                {
+                                    "name": "Artifact",
+                                    "property": [
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 0,
+                                            "gui:required": false,
+                                            "name": "compensation",
+                                            "value": {
+                                                "content": "NotKnown",
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 1,
+                                            "gui:required": false,
+                                            "name": "reject-condition",
+                                            "value": {
+                                                "content": "NotKnown",
+                                                "type": "string"
+                                            }
+                                        }
+                                    ],
+                                    "type": "artifact"
+                                },
+                                {
+                                    "name": "Blood_preasure",
+                                    "property": [
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 0,
+                                            "gui:required": false,
+                                            "name": "systolic",
+                                            "value": {
+                                                "content": "80",
+                                                "type": "int"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 1,
+                                            "gui:required": false,
+                                            "name": "dyastolic",
+                                            "value": {
+                                                "content": 60,
+                                                "type": "int"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 2,
+                                            "gui:required": false,
+                                            "name": "mean",
+                                            "value": {
+                                                "content": 70,
+                                                "type": "float"
+                                            }
+                                        },
+                                        {
+                                            "gui:editable": true,
+                                            "gui:order": 3,
+                                            "gui:required": false,
+                                            "name": "hear_rate",
+                                            "value": {
+                                                "content": 52,
+                                                "type": "int"
+                                            }
+                                        }
+                                    ],
+                                    "type": "blood_preasure"
+                                },
+                                {
+                                    "name": "ExperimentOptParameters",
+                                    "section": {
+                                        "name": "ExperimentOptParam",
+                                        "property": [
+                                            {
+                                                "gui:editable": true,
+                                                "gui:order": 0,
+                                                "gui:required": false,
+                                                "name": "param-name",
+                                                "value": {
+                                                    "content": "nevim",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            {
+                                                "gui:editable": true,
+                                                "gui:order": 1,
+                                                "gui:required": false,
+                                                "name": "param-type",
+                                                "value": {
+                                                    "content": "string",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            {
+                                                "gui:editable": true,
+                                                "gui:order": 2,
+                                                "gui:required": false,
+                                                "name": "param-value",
+                                                "value": {
+                                                    "content": 1,
+                                                    "type": "string"
+                                                }
+                                            }
+                                        ],
+                                        "type": "experimentOptParam"
+                                    },
+                                    "type": "collection"
+                                },
+                                {
+                                    "name": "Experimentators",
+                                    "section": {
+                                        "name": "Person",
+                                        "property": [
+                                            {
+                                                "gui:editable": true,
+                                                "gui:order": 0,
+                                                "gui:required": false,
+                                                "name": "username",
+                                                "value": {
+                                                    "content": "vojta",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            {
+                                                "gui:editable": true,
+                                                "gui:order": 1,
+                                                "gui:required": false,
+                                                "name": "surname",
+                                                "value": {
+                                                    "content": "\u0158ezn\u00ed\u010dek",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            {
+                                                "gui:editable": true,
+                                                "gui:order": 2,
+                                                "gui:required": false,
+                                                "name": "givenname",
+                                                "value": {
+                                                    "content": "Vojt\u011bch",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            {
+                                                "gui:editable": true,
+                                                "gui:order": 3,
+                                                "gui:required": false,
+                                                "name": "gender",
+                                                "value": {
+                                                    "content": "M",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            {
+                                                "gui:editable": true,
+                                                "gui:order": 4,
+                                                "gui:required": false,
+                                                "name": "role",
+                                                "value": {
+                                                    "content": "ROLE_USER",
+                                                    "type": "string"
+                                                }
+                                            }
+                                        ],
+                                        "type": "person"
+                                    },
+                                    "type": "collection"
+                                }
+                            ],
+                            "version": 1,
+                            "xmlns:gui": "http://www.g-node.org/guiml"
+                        }
+                    },
+                    "params": [],
+                    "userId": 128
+                },
+                "_type": "experiment"
+           
