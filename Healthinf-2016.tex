@@ -135,7 +135,7 @@ From Sections \ref{sec:state-of-the-art} and \ref{mobile_app_prototype} we can o
 
 \begin{table*}[bh!]
 \centering
-\caption{Tested systems}
+\caption{Tested Systems}
 \label{tab:tested_systems}
 \begin{tabular}{|l|c|c|c|c|c|c|c|}
 \hline
@@ -149,6 +149,7 @@ Heart rate     & 1                                                              
 Sport Tracker  & 1                                                                                & 2                                                                               & \textbullet                                                                                        &                                                                                     & \textbullet                                & \textbullet                                  & +                           \\ \hline
 Health Tracker &                                                                                  &                                                                                 &                                                                                         &                                                                                     & \textbullet                                &                                   & -                           \\ \hline
 Madbarz        &                                                                                  &                                                                                 &                                                                                         &                                                                                     & \textbullet                                & \textbullet                                  & +                           \\ \hline
+eVito        & 1                                                                                 & 5                                                                                  & \textbullet  & \textbullet                                                                                      &  \textbullet                                                                                   & \textbullet                                                                & +                           \\ \hline
 \end{tabular}
 \end{table*}
 
@@ -178,7 +179,7 @@ The registration form includes both basic information such as name or email and 
 The supported devices must enable either Bluetooth nor ANT transfer. In a current implementation we support limited set of devices produced by Garmin, Fora or eVito.  When the device is paired then the user can transfer the data. Figure \ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure \ref{fig:capture_a} shows list with one paired device - Garmin Heart Rate Sensor. Current heart rate is in Figure \ref{fig:capture_b}. When the user starts measurements data are continuously stored in the device and a chart is continuously plotted as shown in Figure \ref{fig:capture_c}.
 
 
-\begin{figure*}[th!]
+\begin{figure*}
 % Use the relevant command to insert your figure file.
 % For example, with the graphicx package use
 \begin{tabular}{c}
@@ -200,7 +201,7 @@ More specifically odML is  a free form tree-like structure of sections, properti
 Technically EEGBase provide a RESTful API with methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered once the user gets on-line or he/she can enforce upload manually. The data on the server side are transferred to an odML document that is stored in the Elasticsearch noSQL database. On the server side the data are visualized in the detail of the experiment as shown in Figure \ref{fig:EEGBase}.
 
 
-\begin{figure}[!h]
+\begin{figure}
   %\vspace{-0.2cm}
 
   \centering
@@ -265,10 +266,10 @@ Technically EEGBase provide a RESTful API with methods for obtaining user's expe
 \end{lstlisting}
 
 
-\section{Future Work}
+\section{\uppercase{Future Work}}
 \label{future-work}
-
 \noindent
+The presented system serves as a proof-of-concept implementation. This proof-of-concept supports only limited set of sensors. The main emphasis is on the proposal of a universal open format for expressing the sensors data. The format defines the structure and the terminology for limited set of supported sensors. Our future work includes the extension of this terminology to cover a widest collection of health sensors. When this technology is designed we will extend the mobile app to convert data transfered in Bluetooth or ANT+ profiles to odML document satisfies to this terminology. Such a described data can be fully managed in systems as EEGBase. A new release of EEGBase with support of the presented terminology is also our future work. When this work is done we will release a complete description of designed terminology. This terminology can serve to developers of similar systems.
 
 
 
@@ -277,7 +278,8 @@ Technically EEGBase provide a RESTful API with methods for obtaining user's expe
 \label{sec:conclusion}
 
 \noindent 
-We can observe that there is a diverse collection of available sensors on the market. These sensors vary in used data format, topology or transfer protocol. 
+We can observe that there is a diverse collection of available sensors on the market. These sensors vary in used data format, topology or transfer protocol. When the data are processed they must be collected and stored in repositories. We identify topologies distinguishing sensors and selected the most suitable for obtaining and storing the data. Because of producers of sensors uses own systems and proprietary data formats we presented a prototype of own terminology used for expressing data from sensors. This terminology is implemented in an Android system. A limited set of sensors is supported in this approach. A complete process from collecting data by the mobile system, its storage in a universal format respecting presented ontology, and their storage in EEGBase is outlined. This innovative approach can serve as a standardized description and way of transfer data from sensors to remote databases. Respecting ANT+ or Bluetooth profiles by sensors producers is only one limited factor.
+
 \section*{\uppercase{Acknowledgements}}
 
 \noindent 
