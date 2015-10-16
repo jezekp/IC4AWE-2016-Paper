@@ -174,16 +174,16 @@ When the aim of the tool is to support large collections of sensors it must stor
 
 \subsection{Implementation}
 
-With regard to the use of open source technologies in maximal range we decided to implement the system for the Android platform. The main benefit of this selection is its availability on large collections of devices including both tablets and mobile phones. According to StatCounter\footnote{http://gs.statcounter.com} more then 60\% of devices are operated by Android.   Moreover, there is a lot of cheap devices on the market, large community of developers and publication of applications is easy. 
+With regard to the use of open source technologies in maximal range we decided to implement the system for the Android platform. The main benefit of this selection is its availability on large collection of devices including both tablets and mobile phones. According to StatCounter\footnote{http://gs.statcounter.com} more then 60\% of devices are operated by Android.   Moreover, there is a lot of cheap devices on the market, large community of developers and publication of applications is easy. 
 
-The presented proof of concept implementation provides basic functionality including management of user accounts,  support of a limited set of sensors, or visualization of stored data.
+The presented proof of concept implementation provides basic functionality including management of user accounts,  support for a limited set of sensors, or visualization of stored data.
 
-The registration form includes both basic information such as name or email and advanced information such as gender, weight, tallness, current fitness level etc. All these data are required because they can affect results of measurements.
+The registration form includes both basic information about the user such as name or email, and advanced information such as gender, weight, tallness, current fitness level etc. All these data are required because they can affect results of measurements.
 
-The supported devices must enable either Bluetooth nor ANT transfer. In a current implementation we support limited set of devices produced by Garmin and Fora producers. When the device is paired then the user can transfer the data. Figure \ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure \ref{fig:capture_a} shows list with one paired device - Garmin Heart Rate Sensor. Current heart rate is in Figure \ref{fig:capture_b}. When the user starts a measurement data are continuously stored in the device and a chart is continuously plotted as shown in Figure \ref{fig:capture_c}.
+The supported devices must enable either Bluetooth nor ANT transfer. In a current implementation we support limited set of devices produced by Garmin and Fora producers. When the device is paired then the user can transfer the data. Figure \ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure \ref{fig:capture_a} shows a list with one paired device - Garmin Heart Rate Sensor. Current heart rate is shown in Figure \ref{fig:capture_b}. When the user starts a measurement data are continuously stored in the device and a chart is continuously plotted as shown in Figure \ref{fig:capture_c}.
 
 
-\begin{figure*}
+\begin{figure*}[!ht]
 % Use the relevant command to insert your figure file.
 % For example, with the graphicx package use
 \begin{tabular}{c}
