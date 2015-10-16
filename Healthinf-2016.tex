@@ -118,15 +118,15 @@ Moreower, neuroinformatics community identified problems with a long-term descri
 \label{topology_data_transfer}
 
 \noindent 
-Sensors use different way to manipulate data. Some sensors have own display or internal memory for storing measured data these data can be transfered later. These devices usually provide a complete history of stored measurements. On the other hand devices such as heart rate meters do not have internal memory. Data can be transfered only in time of measurement. According to way of data distribution we defined three levels of topologies.
+Sensors use different way to manipulate data. Some sensors have own display or internal memory for storing measured data that can be later transfered. These devices usually provide a complete history of stored measurements. On the other hand devices such as heart rate meters do not have internal memory. Data can be transfered only in time of measurement. According to way of data distribution we defined three levels of topologies.
 
 \begin{itemize}
  \item one-layer - The sensor is a stand-alone unit with controls, display and memory. Such a sensor is completely controlled without any connections to a remote system.   
- \item two-layers - The sensor only measures the data that send to a remote system. This system can be a common computer/laptop or a smart phone/watch etc. 
+ \item two-layers - The sensor only measures the data that sens to a remote system. This system can be a common computer/laptop or a smart phone/watch etc. 
  \item three-layers - This topology adds a cloud service to the two-layers topology. Data are send to the server where they are stored analyzed. 
 \end{itemize}
 
-There are a lot of sensors in one-layer topology including various glucometers, tonometers, stepcounters etc. These devices usually enables easy manipulation and do not require connection to any other system. Anyway the data are stored in a proprietary storage that do not provide means for communication with other systems. Some sensors including heart rate belts or some step counters do not have own display. For the data transfer are usually used technologies Bluetooth or ANT (resp ANT+)\footnote{ANT is a the protocol while ANT+ is a set of mutually agreed upon definitions for what the information sent over ANT represents.}. Data are usually displayed on a smart device screen. Because of limited performance of mobile devices only a basic data processing is provided. There is few exceptions as BlibCare tonometer equipped by WiFi. It enables a direct data transfer to a server using a home network. 
+There are a lot of sensors in one-layer topology including various glucometers, tonometers, stepcounters etc. These devices usually enable easy manipulation and do not require connection to any other system. Anyway, the data are stored in a proprietary storage that do not provide means for communication with other systems. Two layers topology includes sensors such as heart rate belts or some step counters. They do not have own display, but they usually use technologies Bluetooth or ANT (resp ANT+)\footnote{ANT is the protocol while ANT+ is a set of mutually agreed upon definitions for what the information sent over ANT represents.} for the data transfer. Data are usually displayed on a smart device screen. Because of limited performance of mobile devices only a basic data processing is provided. The advanced data processing is performed on a remote server that is added in the three layers topology. There are few exceptions as BlibCare tonometer equipped by WiFi. It enables a direct data transfer to a server using a home network. 
 
 
 
