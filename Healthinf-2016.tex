@@ -217,16 +217,7 @@ Technically EEGBase provide a RESTful API with methods for obtaining user's expe
 
 \begin{lstlisting}[language=json,caption=blood preasure examle, label=odml_example]
 {
-   "_index":"eegdatabase",
-   "_type":"experiment",
-   "_id":"167",
-   "_source":{
-      "experimentId":"167",
-      "params":[
-      ],
-      "userId":243,
-      "groupId":18,
-      "metadata":{
+     "metadata":{
          "odML":{
             "date":"2015-07-03",
             "xmlns:gui":"http://www.g-node.org/guiml",
@@ -267,8 +258,6 @@ Technically EEGBase provide a RESTful API with methods for obtaining user's expe
             ],
             "version":1
          }       
-      }   
-   } 
 }
 \end{lstlisting}
 
@@ -276,7 +265,7 @@ Technically EEGBase provide a RESTful API with methods for obtaining user's expe
 \section{\uppercase{Future Work}}
 \label{future-work}
 \noindent
-Because the presented system serves only as a proof-of-concept implementation that supports only limited set of sensors. The main emphasis has been on the proposal of a universal open format for expressing the sensors data. The format defines the structure and the terminology for sensors supported in the system. Our future work includes the extension of this terminology to cover a widest collection of health sensors. When this terminology is designed we will extend the mobile app to convert data transfered in Bluetooth or ANT+ profiles to an odML document satisfies this terminology. Such a described data can be fully managed in systems such as EEGBase. A new release of EEGBase with the support of the presented terminology is also our future work. When this work is done we will release a complete description of designed terminology. This terminology can serve to developers of similar systems. The mobile system will be also extended to support widest collection of sensors.
+The presented system serves as a proof-of-concept implementation that supports only limited set of sensors. The main emphasis has been on definition of topologies used by sensors for transfer the data and on the proposal of a universal open format for expressing the sensors data. The format defines the structure and the terminology for supported sensors. Our future work includes the extension of this terminology to cover a widest collection of health sensors. When this terminology is designed we will extend the mobile app to convert data transfered in Bluetooth or ANT+ profiles to an odML document satisfies this terminology. Such a described data can be fully managed in systems such as EEGBase. A new release of EEGBase with the support of the presented terminology is also our future work. When this work is done we will release a complete description of designed terminology. This terminology can serve to developers of similar systems. The mobile system will be also extended to support widest collection of sensors.
 
 
 
@@ -285,7 +274,7 @@ Because the presented system serves only as a proof-of-concept implementation th
 \label{sec:conclusion}
 
 \noindent 
-We observed that there is a diverse collection of available sensors on the market. These sensors vary in used data format, topology of data transfer or a transfer protocol. When the data are to be processed they must be collected and stored in databases. We identified topologies distinguishing sensors according to a way of management with data and selected the three layers topology as the most suitable for their long-term storage and processing. Because of the sensors producers use own systems and proprietary data formats they are read, transfered and processed with difficulties. As a solution we presented a prototype of a custom terminology used for expressing data from sensors. This terminology is implemented in the Android system. A limited set of sensors is supported in this implementation. A complete process from collecting data by the mobile system, its storage in a universal format respecting presented ontology, and their storage in EEGBase is outlined. This innovative approach can serve as a standard for developers of neuroinformatics databases when they want to collect data from health sensors. Respecting ANT+ or Bluetooth profiles by sensors producers is only one limited factor.
+We observed that a diverse collection of available sensors exists on the market. These sensors vary in used data format, topology of data transfer or a transfer protocol. When the data are processed they must be collected and stored in databases. We identified topologies distinguishing sensors according to a way of management with data and selected the three layers topology as the most suitable for their long-term storage and processing. Because of the sensors producers use own systems and proprietary data formats they are read, transfered and processed with difficulties. As a solution we presented a prototype of a custom terminology used for expressing data from sensors. This terminology is implemented in the Android system. A limited set of sensors is supported in this implementation. A complete process from collecting data by the mobile system, its storage in a universal format respecting presented ontology, and their storage in EEGBase is outlined. This innovative approach can serve as a standard for developers of neuroinformatics databases when they want to collect data from health sensors. Respecting ANT+ or Bluetooth profiles by producers of sensors is only one limited factor.
 
 \section*{\uppercase{Acknowledgements}}
 
