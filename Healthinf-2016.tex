@@ -132,11 +132,14 @@ Sensors use different ways to manipulate data. Some sensors have their own displ
 \section{\uppercase{Tested systems}}
 \label{tested_systems}
 \noindent
-From Sections \ref{sec:state-of-the-art} and \ref{mobile_app_prototype} we can observer that sensors based on the three layers topology are most suitable for long term storage and management of collected data. When these devices provide a remote transfer of data to a server these devices are suitable to be integrated with neuroinformatics databases. The biggest obstacle is a data format of transferred data. When devices implement Bluetooth or ANT+ technologies they can use a lot of defined profiles including e. g. BLP, CSCP, GLP, HRP, WSP\footnote{https://developer.bluetooth.org/TechnologyOverview/Pages/Profiles.aspx} for Bluetooth, or Weight Scale a Heart rate\footnote{https://www.thisisant.com/developer/ant-plus/device-profiles} for ANT+. Table \ref{tab:tested_systems} summarizes systems we tested. We selected these they provide at least a cloud service or statistics. For all systems we count number of supported internal sensors (e. g. smart phone GPS) and external sensors. We can observe that the support of sensors is very limited. Even the last two do not support any sensor, data are inserted manually. The last column \emph{Design} is more or less a subjective evaluation of the user interface. Although all tested systems use ANT or Bluetooth they implement a proprietary transfer format instead of using any available profile.
+ 
+ E-health and fitness systems that use the three-layer sensor architecture described above are most suitable for long term storage and management of collected data. When providing a remote data transfer to a~server, these devices are also suitable to be integrated with neuroinformatics databases. The biggest obstacle encountered is usually a~data format of transferred data. When devices implement Bluetooth or ANT+ technologies, they can use a lot of defined profiles including BLP, CSCP, GLP, HRP, WSP\footnote{https://developer.bluetooth.org/TechnologyOverview/Pages/Profiles.aspx} for Bluetooth, or Weight Scale and Heart rate\footnote{https://www.thisisant.com/developer/ant-plus/device-profiles} for ANT+.
+ 
+ Table~\ref{tab:tested_systems} summarizes and provides evaluation of the e-health and fitness systems we tested. For evaluation we selected only the systems they provide at least a~cloud service as a~storage or statistical results as an analytic result. For all systems we considered the number of supported internal (e.g. a GPS sensor on a~smart phone) and external sensors. This number is very limited as can be seen in Table~\ref{tab:tested_systems}. Two systems do not support any sensor; data are inserted manually. The last column \emph{Design} is a~subjective evaluation of the user interface. Although all tested systems use the ANT or Bluetooth technology, they implement a proprietary transfer format instead of using any available profile.
 
 \begin{table*}[th!]
 \centering
-\caption{Tested Systems}
+\caption{Tested e-health and fitness systems}
 \label{tab:tested_systems}
 \begin{tabular}{|l|c|c|c|c|c|c|c|}
 \hline
@@ -153,7 +156,6 @@ Madbarz        &                                                                
 eVito        & 1                                                                                 & 5                                                                                  & \textbullet  & \textbullet                                                                                      &  \textbullet                                                                                   & \textbullet                                                                & +                           \\ \hline
 \end{tabular}
 \end{table*}
-
 
 
 \section{\uppercase{Mobile application prototype}}
