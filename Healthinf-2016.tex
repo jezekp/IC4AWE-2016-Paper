@@ -114,21 +114,25 @@ Available tools and sensors are usually designed for one specific activity. They
 Moreover, neuroinformatics community identified problems with a long-term description, storage and management of experimental data/metadata \cite{CRCNS}. To facilitate solution of these difficulties International Neuroinformatics Coordinating Facility (INCF) \cite{INCF} covers activities for development of infrastructures and data standards in neuroinformatics community. Ontology for Experimental Neurophysiology (OEN) \cite{10.3389/conf.fninf.2014.18.00044} uses semantic web approach to describe terminology used in biomedical science and neuroscience.  Our research groups has developed a~system for long term storage and management of EEG/ERP experiments, EEGBase \cite{ISI:000306821100004}. A mobile EEGBase client \cite{10.3389/conf.fninf.2013.09.00046} is a supplementary Android tool that enables collecting experiments out of the laboratory and provides an on-line synchronization with EEGBase.
 
 
-\section{\uppercase{Topologies and Data Transfer}}
+\section{\uppercase{Sensor Architectures and Data Transfer}}
 \label{topology_data_transfer}
 
 \noindent
-Sensors use different way to manipulate data. Some sensors have own display or internal memory for storing measured data that can be later transfered. These devices usually provide a complete history of stored measurements. On the other hand devices such as heart rate meters do not have internal memory. Data can be transfered only in time of measurement. According to way of data distribution we defined three levels of topologies.
+Sensors use different ways to manipulate data. Some sensors have their own displays or internal memories for storing measured data that can be later transferred to a long term storage. These devices usually provide a complete history (of course, limited by the capacity of their internal memories) of stored measurements. On the other hand, devices such as heart rate meters do not have any internal memory. Data can be transferred only at the time of measurement. According to the way the data are distributed, we defined three levels of sensor architecture.
 
 \begin{itemize}
- \item one-layer - The sensor is a stand-alone unit with controls, display and memory. Such a sensor is completely controlled without any connections to a remote system.
- \item two-layers - The sensor only measures the data that sens to a remote system. This system can be a common computer/laptop or a smart phone/watch etc.
- \item three-layers - This topology adds a cloud service to the two-layers topology. Data are send to the server where they are stored analyzed.
+ \item one-layer - The sensor is a stand-alone unit having a display, memory, and a set of controls. Such a sensor is completely self-controlled and does not establish any connection to a~remote system.
+ \item two-layers - The sensor captures data that are finally sent to a remote system (the sensor may/may not have an internal memory). This remote system can be a common computer/laptop or a smart phone/watch etc.
+ \item three-layers - A cloud service is added to the two-layer architecture. The captured data are sent to a~remote server where they are stored and analyzed.
 \end{itemize}
 
-There are a lot of sensors in one-layer topology including various glucometers, tonometers, stepcounters etc. These devices usually enable easy manipulation and do not require connection to any other system. Anyway, the data are stored in a proprietary storage that do not provide means for communication with other systems. Two layers topology includes sensors such as heart rate belts or some step counters. They do not have own display, but they usually use technologies Bluetooth or ANT (resp ANT+)\footnote{ANT is the protocol while ANT+ is a set of mutually agreed upon definitions for what the information sent over ANT represents.} for the data transfer. Data are usually displayed on a smart device screen. Because of limited performance of mobile devices only a basic data processing is provided. The advanced data processing is performed on a remote server that is added in the three layers topology. There are few exceptions as BlibCare tonometer equipped by WiFi. It enables a direct data transfer to a server using a home network.
+ A lot of sensors belonging to the one-layer architecture, including various glucometers, tonometers, and step counters, store captured data in a proprietary storage. These devices usually enable users easy manipulation and do not require/provide any connection to other systems. Representatives of two-layer architecture include sensors such as heart rate belts or  step counters. They often do not have own display and usually use Bluetooth or ANT (resp ANT+)\footnote{ANT is the protocol while ANT+ is a set of mutually agreed upon definitions for what the information sent over ANT represents.}technologies  for data transfer. Then the data are usually displayed on a screen of a smart device. Because of limited performance of mobile devices only a basic data processing is provided. Advanced data processing is performed on a remote server that forms part of the three-layer architecture. There are few exceptions such as BlibCare tonometer equipped with WiFi. Then the captured data can be transferred directly by using e.g. a home WiFi network.
 
 
+\section{\uppercase{Tested systems}}
+\label{tested_systems}
+\noindent
+From Sections \ref{sec:state-of-the-art} and \ref{mobile_app_prototype} we can observer that sensors based on the three layers topology are most suitable for long term storage and management of collected data. When these devices provide a remote transfer of data to a server these devices are suitable to be integrated with neuroinformatics databases. The biggest obstacle is a data format of transferred data. When devices implement Bluetooth or ANT+ technologies they can use a lot of defined profiles including e. g. BLP, CSCP, GLP, HRP, WSP\footnote{https://developer.bluetooth.org/TechnologyOverview/Pages/Profiles.aspx} for Bluetooth, or Weight Scale a Heart rate\footnote{https://www.thisisant.com/developer/ant-plus/device-profiles} for ANT+. Table \ref{tab:tested_systems} summarizes systems we tested. We selected these they provide at least a cloud service or statistics. For all systems we count number of supported internal sensors (e. g. smart phone GPS) and external sensors. We can observe that the support of sensors is very limited. Even the last two do not support any sensor, data are inserted manually. The last column \emph{Design} is more or less a subjective evaluation of the user interface. Although all tested systems use ANT or Bluetooth they implement a proprietary transfer format instead of using any available profile.
 
 \begin{table*}[th!]
 \centering
@@ -150,12 +154,6 @@ eVito        & 1                                                                
 \end{tabular}
 \end{table*}
 
-
-
-\section{\uppercase{Tested systems}}
-\label{tested_systems}
-\noindent
-From Sections \ref{sec:state-of-the-art} and \ref{mobile_app_prototype} we can observer that sensors based on the three layers topology are most suitable for long term storage and management of collected data. When these devices provide a remote transfer of data to a server these devices are suitable to be integrated with neuroinformatics databases. The biggest obstacle is a data format of transferred data. When devices implement Bluetooth or ANT+ technologies they can use a lot of defined profiles including e. g. BLP, CSCP, GLP, HRP, WSP\footnote{https://developer.bluetooth.org/TechnologyOverview/Pages/Profiles.aspx} for Bluetooth, or Weight Scale a Heart rate\footnote{https://www.thisisant.com/developer/ant-plus/device-profiles} for ANT+. Table \ref{tab:tested_systems} summarizes systems we tested. We selected these they provide at least a cloud service or statistics. For all systems we count number of supported internal sensors (e. g. smart phone GPS) and external sensors. We can observe that the support of sensors is very limited. Even the last two do not support any sensor, data are inserted manually. The last column \emph{Design} is more or less a subjective evaluation of the user interface. Although all tested systems use ANT or Bluetooth they implement a proprietary transfer format instead of using any available profile.
 
 
 \section{\uppercase{Mobile application prototype}}
