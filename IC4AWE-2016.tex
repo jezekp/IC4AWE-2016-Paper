@@ -183,7 +183,16 @@ The presented proof of concept implementation provides basic functionality inclu
 
 The registration form includes both basic information about the user such as his/her name or email, and advanced information such as gender, weight, height, current fitness level, etc. All these data are required because they can affect results of measurements.
 
-Supported devices must enable either Bluetooth or ANT transfer. In the current implementation we support a~limited set of devices produced by Garmin and Fora producers. When the device is paired, the user can transfer the data. Figure~\ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure~\ref{fig:capture_a} shows a list with a~paired device, the Garmin Heart Rate Sensor. The current heart rate is shown in Figure~\ref{fig:capture_b}. When the user starts a measurement, data are continuously stored in the device and the related heart rate chart is continuously plotted as shown in Figure~\ref{fig:capture_c}.
+Supported devices must enable either Bluetooth or ANT transfer. In the current implementation we tested a~limited set of devices produced by Garmin and Fora producers. When the device is paired, the user can transfer the data. Figure~\ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure~\ref{fig:capture_a} shows a list with a~paired device, the Garmin Heart Rate Sensor. The current heart rate is shown in Figure~\ref{fig:capture_b}. When the user starts a measurement, data are continuously stored in the device and the related heart rate chart is continuously plotted as shown in Figure~\ref{fig:capture_c}.
+
+\begin{figure}
+  %\vspace{-0.2cm}
+
+  \centering
+   {\epsfig{file = Materials/architecture.eps, width = 7cm}}
+  \caption{System Architecture}
+  \label{fig:EEGBase}
+ \end{figure}
 
 
 \begin{figure*}[!ht]
@@ -212,7 +221,7 @@ Technically EEGBase provides a RESTful API containing methods for obtaining user
   %\vspace{-0.2cm}
 
   \centering
-   {\epsfig{file = Materials/portal_example2.png, width = 8cm}}
+   {\epsfig{file = Materials/portal_example2.png, width = 7cm}}
   \caption{Data stored in EEGBase}
   \label{fig:EEGBase}
  \end{figure}
