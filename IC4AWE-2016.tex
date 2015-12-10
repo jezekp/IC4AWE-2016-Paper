@@ -21,6 +21,7 @@
 \usepackage{color}
 \usepackage{multicol}
 \usepackage{amsmath}
+\usepackage{stfloats}
 
 
 \usepackage{floatrow}
@@ -131,16 +132,18 @@ Sensors use different ways to manipulate data. Some sensors have their own displ
 
  A lot of sensors belonging to the one-layer architecture, including various glucometers, tonometers, and step counters, store captured data in a proprietary storage. These devices usually do not require/provide any connection to other systems. Representatives of two-layer architecture include sensors such as heart rate belts or  step counters. They often do not have their own display and usually use Bluetooth or ANT (resp ANT+)\footnote{ANT is the protocol while ANT+ is a set of mutually agreed upon definitions for what the information sent over ANT represents.}technologies  for data transfer. Then the data are usually displayed on a screen of a smart device. Because of the limited performance of mobile devices only a basic data processing is provided. Advanced data processing is performed on a remote server that forms part of the three-layer architecture. There are few exceptions such as BlibCare tonometer equipped with WiFi. Then the captured data can be transferred directly by using e.g. a home WiFi network.
 
+ 
 
 \section{\uppercase{Tested systems}}
 \label{tested_systems}
 \noindent
 
-E-health and fitness systems that use the three-layer sensor architecture described above are most suitable for long term storage and management of collected data. When providing a remote data transfer to a~server, these devices are also suitable to be integrated with neuroinformatics databases. The biggest obstacle encountered is usually a~data format of transferred data. When devices implement Bluetooth or ANT+ technologies, they can use a lot of defined profiles including Blood Pressure Profile(BLP), Heart Rate Profile (HRP), Health Thermometer Profile (HTP)\footnote{https://developer.bluetooth.org/TechnologyOverview/Pages/Profiles.aspx} for Bluetooth, or Weight Scale and Heart rate\footnote{https://www.thisisant.com/developer/ant-plus/device-profiles} for ANT+.
+E-health and fitness systems that use the three-layer sensor architecture described above are most suitable for long term storage and management of collected data. When providing a remote data transfer to a~server, these devices are also suitable to be integrated with neuroinformatics databases. The biggest obstacle encountered is usually a~data format of transferred data. When devices implement Bluetooth or ANT+ technologies, they can use a lot of defined profiles including Blood Pressure Profile(BLP), Heart Rate Profile (HRP), Health Thermometer Profile (HTP)\footnote{https://developer.bluetooth.org/TechnologyOverview/ Pages/Profiles.aspx} for Bluetooth, or Weight Scale and Heart rate\footnote{https://www.thisisant.com/developer/ant-plus/device-profiles} for ANT+.
 
 Table~\ref{tab:tested_systems} summarizes and provides evaluation of the e-health and fitness systems we tested. For evaluation we selected only the systems they provide at least a~cloud service as a~storage or statistical results as an analytic result. For all systems we considered the number of supported internal (e.g. a GPS sensor on a~smart phone) and external sensors. This number is very limited as can be seen in Table~\ref{tab:tested_systems}. Two systems do not support any sensor; data are inserted manually. The last column \emph{Design} is a~subjective evaluation of the user interface. Although all tested systems use the ANT or Bluetooth technology, they implement a proprietary transfer format instead of using any available profile.
 
-\begin{table*}[th!]
+
+\begin{table*}[t]
 \centering
 \caption{Tested e-health and fitness systems}
 \label{tab:tested_systems}
@@ -173,11 +176,7 @@ Having difficulties with closed-source dedicated devices we present a prototype 
 
 When the aim of the tool is to support large collections of sensors, it must store data in a flexible data format. Existing data formats are based on different levels of abstraction and include low-level binary formats, highly abstract implementation-independent data formats, and formats based on ontologies. We required a~format that provides a sufficient level of abstraction to be system independent, but also easy-to-use format having no specific demands on users. Moreover, we prefer open-source formats supported and accepted by large neuroscience community.
 
-The working group of the INCF Task Force on Electrophysiology\footnote{http://www.incf.org/programs/datasharing/electrophysiology-task-force} introduced two approaches towards defining a standard, which may eventually be merged \cite{10.3389/conf.fninf.2013.09.00069}. The first one uses the Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF, the  specialized HDF5 format for electrophysiology. The NIX format~\cite{Stoewer:2014} provides a data model for storing experimental data in HDF5, together with metadata in the odML format~\cite{10.3389/fninf.2011.00016}. We selected odML as a suitable format for the presented tool because of its platform-independence, simplicity, and human-readability. Moreover, it ensures a compatibility with other systems developed in neuroinformatics community \cite{10.3389/conf.fninf.2014.18.00029}, \cite{10.3389/conf.fninf.2014.18.00053}, \cite{10.3389/conf.fninf.2013.09.00025}.
-
-\subsection{Terminology}
-
-Figure \ref{fig:Terminology} shows the proposed terminology. Currently we support sensors for measurements of Blood Pressure, Heart Rate, Gluccose Level and Weight Scale including smart scales that measure e. g. hydratation, muscle mass or bone mass. Because of the flexibility of the odML format, this terminology can be easily extended for another set of sensors.
+The working group of the INCF Task Force on Electrophysiology\footnote{http://www.incf.org/programs/datasharing/ electrophysiology-task-force} introduced two approaches towards defining a standard, which may eventually be merged \cite{10.3389/conf.fninf.2013.09.00069}. The first one uses the Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF, the  specialized HDF5 format for electrophysiology. The NIX format~\cite{Stoewer:2014} provides a data model for storing experimental data in HDF5, together with metadata in the odML format~\cite{10.3389/fninf.2011.00016}. We selected odML as a suitable format for the presented tool because of its platform-independence, simplicity, and human-readability. Moreover, it ensures a compatibility with other systems developed in neuroinformatics community \cite{10.3389/conf.fninf.2014.18.00029}, \cite{10.3389/conf.fninf.2014.18.00053}, \cite{10.3389/conf.fninf.2013.09.00025}.
 
 \begin{figure}
   %\vspace{-0.2cm}
@@ -187,9 +186,16 @@ Figure \ref{fig:Terminology} shows the proposed terminology. Currently we suppor
   \caption{Proposed Terminology}
   \label{fig:Terminology}
  \end{figure}
- 
+
+
+\subsection{Terminology}
+
+Figure \ref{fig:Terminology} shows the proposed terminology. Currently we support sensors for measurements of Blood Pressure, Heart Rate, Gluccose Level and Weight Scale including smart scales that measure e. g. hydratation, muscle mass or bone mass. Because of the flexibility of the odML format, this terminology can be easily extended for another set of sensors.
+
 
 More specifically, odML is a~free form tree-like structure of sections, properties and values that  If we store e.g. data from a blood pressure sensor, we define the section \emph{blood\_presure} with several properties: \textit{systolic\_pressure}, \textit{diastolic\_pressure}, \textit{mean\_pressure}, and \textit{heart\_rate}. Listing \ref{odml_example} shows a JSON representation of the proposed data structure. The document is simplified to keep readability. A~complete document contains a~complete set of properties describing the experiment.
+
+
 
  
 \begin{lstlisting}[language=json,caption=blood pressure example, label=odml_example]
@@ -238,9 +244,6 @@ More specifically, odML is a~free form tree-like structure of sections, properti
 }
 \end{lstlisting}
 
-
-
-
 \subsection{Implementation}
 
 To support the use of open source technologies we implemented the system for the Android platform that is available on a~large collection of devices including tablets and mobile phones. According to StatCounter\footnote{http://gs.statcounter.com} more than 60\% of devices are operated by Android. Moreover, there are other advantages to use this platform: a~lot of cheap devices on the market, large community of developers and easy publication of applications.
@@ -252,7 +255,9 @@ The registration form includes both basic information about the user such as his
 Figure \ref{fig:Architecture} shows a basic architecture of the complete system. The user collects data using a body sensor. When this sensor supports any ANT+ or Bluetooth profile this data can be transferred to MoBio running on a smart phone. Then MoBio transfer data expressed in an odML terminology to the server.
 
 
-\begin{figure}
+Supported devices must enable either Bluetooth or ANT transfer. In the current implementation we tested a~limited set of devices produced by Garmin and Fora producers. When the device is paired, the user can transfer the data. Figure~\ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure~\ref{fig:capture_a} shows a list with a~paired device, the Garmin Heart Rate Sensor. The current heart rate is shown in Figure~\ref{fig:capture_b}. When the user starts a measurement, data are continuously stored in the device and the related heart rate chart is continuously plotted as shown in Figure~\ref{fig:capture_c}.
+
+ \begin{figure}
   %\vspace{-0.2cm}
 
   \centering
@@ -260,9 +265,6 @@ Figure \ref{fig:Architecture} shows a basic architecture of the complete system.
   \caption{System Architecture}
   \label{fig:Architecture}
  \end{figure}
-
- Supported devices must enable either Bluetooth or ANT transfer. In the current implementation we tested a~limited set of devices produced by Garmin and Fora producers. When the device is paired, the user can transfer the data. Figure~\ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure~\ref{fig:capture_a} shows a list with a~paired device, the Garmin Heart Rate Sensor. The current heart rate is shown in Figure~\ref{fig:capture_b}. When the user starts a measurement, data are continuously stored in the device and the related heart rate chart is continuously plotted as shown in Figure~\ref{fig:capture_c}.
- 
 
 \begin{figure*}[!ht]
 % Use the relevant command to insert your figure file.
@@ -278,14 +280,6 @@ Figure \ref{fig:Architecture} shows a basic architecture of the complete system.
 \end{figure*}
 
 
-\subsection{Integration with EEGBase}
-
-The collected data can be transferred to any neuroinformatics database supporting the odML format. 
-The main functionalities of EEGBase include storing, uploading, downloading, and managing experimental data and metadata. Currently we are implementing an advanced system of user templates stored in the odML format for different kinds of metadata. This template system enables users to easily define different kind of metadata for various experiments. Such a template can be defined according to different data coming from different sensors. That is why we selected EEGBase as a proof-of-concept implementation.
-
-Technically EEGBase provides a RESTful API containing methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered once when the user gets on-line. The user can also enforce the upload manually. Once the data are transferred the server the odML document is stored in the Elasticsearch noSQL database and visualized. Figure~\ref{fig:EEGBase} shows visualization of data from Listing \ref{odml_example}.
-
-
 \begin{figure}
   %\vspace{-0.2cm}
 
@@ -296,9 +290,19 @@ Technically EEGBase provides a RESTful API containing methods for obtaining user
  \end{figure}
 
 
+\subsection{Integration with EEGBase}
+
+The collected data can be transferred to any neuroinformatics database supporting the odML format. 
+The main functionalities of EEGBase include storing, uploading, downloading, and managing experimental data and metadata. Currently we are implementing an advanced system of user templates stored in the odML format for different kinds of metadata. This template system enables users to easily define different kind of metadata for various experiments. Such a template can be defined according to different data coming from different sensors. That is why we selected EEGBase as a proof-of-concept implementation.
+
+Technically EEGBase provides a RESTful API containing methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered once when the user gets on-line. The user can also enforce the upload manually. Once the data are transferred the server the odML document is stored in the Elasticsearch noSQL database and visualized. Figure~\ref{fig:EEGBase} shows visualization of data from Listing \ref{odml_example}.
+
+
+
+
 
 \section{Discussions}
-Although the presented terminology covers basic set of sensors it is easy extensible because of the usage of open format odML. 
+Presented terminology covers basic set of sensors. Moreover it is easy extensible because of the usage of an open format odML. Its JSON serialization is suitable for wireless transfer because of the low memory requirements in comparison with e. g. XML.  If we suppose a large sensor network (say 15 for human tracking) with 10 signals per sensor and say sampling frequency 50Hz and one sample produces 1B of the data then one hour record produces about 27MB of data plus a few kilobytes of space for JSON elements. It will work without difficulties with regard to capacity of todays SD cards. The data security is ensured by used protocols because both Bluetooth and ANT support the data transfer via a secured channel.
 
 \section{\uppercase{Conclusions}}
 \label{sec:conclusion}
@@ -312,6 +316,7 @@ Our future work includes extension of the presented terminology to cover a~broad
 \section*{\uppercase{Acknowledgements}}
 
 \noindent
+
 Will be added in CR version
 
 
