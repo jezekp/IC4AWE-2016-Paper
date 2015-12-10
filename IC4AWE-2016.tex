@@ -175,40 +175,9 @@ When the aim of the tool is to support large collections of sensors, it must sto
 
 The working group of the INCF Task Force on Electrophysiology\footnote{http://www.incf.org/programs/datasharing/electrophysiology-task-force} introduced two approaches towards defining a standard, which may eventually be merged \cite{10.3389/conf.fninf.2013.09.00069}. The first one uses the Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF, the  specialized HDF5 format for electrophysiology. The NIX format~\cite{Stoewer:2014} provides a data model for storing experimental data in HDF5, together with metadata in the odML format~\cite{10.3389/fninf.2011.00016}. We selected odML as a suitable format for the presented tool because of its platform-independence, simplicity, and human-readability. Moreover, it ensures a compatibility with other systems developed in neuroinformatics community \cite{10.3389/conf.fninf.2014.18.00029}, \cite{10.3389/conf.fninf.2014.18.00053}, \cite{10.3389/conf.fninf.2013.09.00025}.
 
-\subsection{Implementation}
-
-To support the use of open source technologies we implemented the system for the Android platform that is available on a~large collection of devices including tablets and mobile phones. According to StatCounter\footnote{http://gs.statcounter.com} more than 60\% of devices are operated by Android. Moreover, there are other advantages to use this platform: a~lot of cheap devices on the market, large community of developers and easy publication of applications.
-
-The presented proof of concept implementation provides basic functionality including management of user accounts, support for a limited set of sensors, and visualization of stored data.
-
-The registration form includes both basic information about the user such as his/her name or email, and advanced information such as gender, weight, height, current fitness level, etc. All these data are required because they can affect results of measurements.
-
-Supported devices must enable either Bluetooth or ANT transfer. In the current implementation we tested a~limited set of devices produced by Garmin and Fora producers. When the device is paired, the user can transfer the data. Figure~\ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure~\ref{fig:capture_a} shows a list with a~paired device, the Garmin Heart Rate Sensor. The current heart rate is shown in Figure~\ref{fig:capture_b}. When the user starts a measurement, data are continuously stored in the device and the related heart rate chart is continuously plotted as shown in Figure~\ref{fig:capture_c}.
-
-\begin{figure}
-  %\vspace{-0.2cm}
-
-  \centering
-   {\epsfig{file = Materials/architecture.eps, width = 7cm}}
-  \caption{System Architecture}
-  \label{fig:Architecture}
- \end{figure}
-
-
-\begin{figure*}[!ht]
-% Use the relevant command to insert your figure file.
-% For example, with the graphicx package use
-\begin{tabular}{c}
-\subfloat[List of available sensors]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture.PNG}\label{fig:capture_a}}
-\hspace{10pt}\subfloat[Current heart rate]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture3.PNG}\label{fig:capture_b}}
-\hspace{10pt}\subfloat[Long term heart rate]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture2.PNG}\label{fig:capture_c}}
-\end{tabular}
-% figure caption is below the figure
-\caption{Mobile Application Preview}
-\label{fig:mob_app_prev}
-\end{figure*}
-
 \subsection{Terminology}
+
+Figure \ref{fig:Terminology} shows the proposed terminology. Currently we support sensors for measurements of Blood Pressure, Heart Rate, Gluccose Level and Weight Scale including smart scales that measure e. g. hydratation, muscle mass or bone mass. Because of the flexibility of the odML format, this terminology can be easily extended for another set of sensors.
 
 \begin{figure}
   %\vspace{-0.2cm}
@@ -218,26 +187,11 @@ Supported devices must enable either Bluetooth or ANT transfer. In the current i
   \caption{Proposed Terminology}
   \label{fig:Terminology}
  \end{figure}
+ 
 
-\subsection{Integration with EEGBase}
+More specifically, odML is a~free form tree-like structure of sections, properties and values that  If we store e.g. data from a blood pressure sensor, we define the section \emph{blood\_presure} with several properties: \textit{systolic\_pressure}, \textit{diastolic\_pressure}, \textit{mean\_pressure}, and \textit{heart\_rate}. Listing \ref{odml_example} shows a JSON representation of the proposed data structure. The document is simplified to keep readability. A~complete document contains a~complete set of properties describing the experiment.
 
-Collected data are stored on the device SD card. They can be visualized directly on the mobile phone screen or transferred to the server and stored there for future processing. The main functionalities of EEGBase include storing, uploading, downloading, and managing experimental data and metadata. Currently we are implementing an advanced system of user templates stored in the odML format for different kinds of metadata. This template system is also used for data from sensors.
-
-More specifically, odML is a~free form tree-like structure of sections, properties and values that enables users to easily define different kind of metadata for various experiments. Such a template can be defined according to different data coming from different sensors. If we store e.g. data from a blood pressure sensor, we define the section \emph{blood\_presure} with several properties: \textit{systolic\_pressure}, \textit{diastolic\_pressure}, \textit{mean\_pressure}, and \textit{heart\_rate}. Listing \ref{odml_example} shows a JSON representation of the proposed data structure. The document is simplified to keep readability. A~complete document contains a~complete set of properties describing the experiment.
-
-Technically EEGBase provides a RESTful API containing methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered once when the user gets on-line. The user can also enforce the upload manually. The data on the server are transferred to an odML document that is stored in the Elasticsearch noSQL database and visualized on the server as shown in Figure~\ref{fig:EEGBase}.
-
-
-\begin{figure}
-  %\vspace{-0.2cm}
-
-  \centering
-   {\epsfig{file = Materials/portal_example2.png, width = 7cm}}
-  \caption{Data stored in EEGBase}
-  \label{fig:EEGBase}
- \end{figure}
-
-
+ 
 \begin{lstlisting}[language=json,caption=blood pressure example, label=odml_example]
 {
      "metadata":{
@@ -287,6 +241,64 @@ Technically EEGBase provides a RESTful API containing methods for obtaining user
 
 
 
+\subsection{Implementation}
+
+To support the use of open source technologies we implemented the system for the Android platform that is available on a~large collection of devices including tablets and mobile phones. According to StatCounter\footnote{http://gs.statcounter.com} more than 60\% of devices are operated by Android. Moreover, there are other advantages to use this platform: a~lot of cheap devices on the market, large community of developers and easy publication of applications.
+
+The presented proof of concept implementation provides basic functionality including management of user accounts, support for a limited set of sensors, and visualization of stored data. Collected data are stored on the device SD card. They can be visualized directly on the mobile phone screen or transferred to the server and stored there for future processing.
+
+The registration form includes both basic information about the user such as his/her name or email, and advanced information such as gender, weight, height, current fitness level, etc. All these data are required because they can affect results of measurements.
+
+Figure \ref{fig:Architecture} shows a basic architecture of the complete system. The user collects data using a body sensor. When this sensor supports any ANT+ or Bluetooth profile this data can be transferred to MoBio running on a smart phone. Then MoBio transfer data expressed in an odML terminology to the server.
+
+
+\begin{figure}
+  %\vspace{-0.2cm}
+
+  \centering
+   {\epsfig{file = Materials/architecture.eps, width = 7cm}}
+  \caption{System Architecture}
+  \label{fig:Architecture}
+ \end{figure}
+
+ Supported devices must enable either Bluetooth or ANT transfer. In the current implementation we tested a~limited set of devices produced by Garmin and Fora producers. When the device is paired, the user can transfer the data. Figure~\ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure~\ref{fig:capture_a} shows a list with a~paired device, the Garmin Heart Rate Sensor. The current heart rate is shown in Figure~\ref{fig:capture_b}. When the user starts a measurement, data are continuously stored in the device and the related heart rate chart is continuously plotted as shown in Figure~\ref{fig:capture_c}.
+ 
+
+\begin{figure*}[!ht]
+% Use the relevant command to insert your figure file.
+% For example, with the graphicx package use
+\begin{tabular}{c}
+\subfloat[List of available sensors]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture.PNG}\label{fig:capture_a}}
+\hspace{10pt}\subfloat[Current heart rate]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture3.PNG}\label{fig:capture_b}}
+\hspace{10pt}\subfloat[Long term heart rate]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture2.PNG}\label{fig:capture_c}}
+\end{tabular}
+% figure caption is below the figure
+\caption{Mobile Application Preview}
+\label{fig:mob_app_prev}
+\end{figure*}
+
+
+\subsection{Integration with EEGBase}
+
+The collected data can be transferred to any neuroinformatics database supporting the odML format. 
+The main functionalities of EEGBase include storing, uploading, downloading, and managing experimental data and metadata. Currently we are implementing an advanced system of user templates stored in the odML format for different kinds of metadata. This template system enables users to easily define different kind of metadata for various experiments. Such a template can be defined according to different data coming from different sensors. That is why we selected EEGBase as a proof-of-concept implementation.
+
+Technically EEGBase provides a RESTful API containing methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered once when the user gets on-line. The user can also enforce the upload manually. Once the data are transferred the server the odML document is stored in the Elasticsearch noSQL database and visualized. Figure~\ref{fig:EEGBase} shows visualization of data from Listing \ref{odml_example}.
+
+
+\begin{figure}
+  %\vspace{-0.2cm}
+
+  \centering
+   {\epsfig{file = Materials/portal_example2.png, width = 7cm}}
+  \caption{Data stored in EEGBase}
+  \label{fig:EEGBase}
+ \end{figure}
+
+
+
+\section{Discussions}
+Although the presented terminology covers basic set of sensors it is easy extensible because of the usage of open format odML. 
 
 \section{\uppercase{Conclusions}}
 \label{sec:conclusion}
