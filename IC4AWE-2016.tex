@@ -81,9 +81,9 @@
 \email{jezekp@ntis.zcu.cz, moucek@kiv.zcu.cz}
 }
 
-\keywords{MoBio, sensor, Android, mobile application, Terminology, Data transfer, EEGBase}
+\keywords{MoBio, sensor, Android, mobile application, brain data, health data, domain terminology, data transfer, EEGBase}
 
-\abstract{There are a lot of sensors for monitoring of human health or fitness level on the market. They enable collection of data from human body, advanced devices also enable data transfer to remote servers where the data are further processed. Since various architectures and data formats are used for data transfer, integration of sensory data with already existing neuroinformatics databases is difficult. As a solution we introduced a terminology describing data from a limited collection of sensors. The terminology is implemented in the odML format and integrated in a proof-of-concept Android application. Data transfer, storage and visualisation as well as integration with a remote neuroinformatics database are presented.}
+\abstract{There are a lot of sensors for monitoring human health and/or fitness level on the market. They facilitate collection of data from the human body and advanced devices even facilitate data transfer to remote servers where the collected data are further processed. While health data, obtained e.g. from accelerometers or chest straps, are collected rather frequently, brain electrophysiology data, obtained from surface electrodes, are still collected relatively rarely. However, integration and correlation of brain signals with other sensory data would be very interesting for next research of physical and mental health. Although capturing brain signals in real environment still faces technological difficulties, current development of common infrastructure seems to be useful. Then this article deals with various architectures and data formats used for storage and transfer of sensory data and their possible integration with existing neuroinformatics approaches. As a~solution we introduced a~terminology describing data from a~limited collection of sensors. The terminology is implemented in the odML format and integrated in a~proof-of-concept Android application. Data transfer, storage and visualisation as well as integration with a~remote neuroinformatics resource are presented.}
 
 \onecolumn \maketitle \normalsize \vfill
 
@@ -132,7 +132,7 @@ Sensors use different ways to manipulate data. Some sensors have their own displ
 
  A lot of sensors belonging to the one-layer architecture, including various glucometers, tonometers, and step counters, store captured data in a proprietary storage. These devices usually do not require/provide any connection to other systems. Representatives of two-layer architecture include sensors such as heart rate belts or  step counters. They often do not have their own display and usually use Bluetooth or ANT (resp ANT+)\footnote{ANT is the protocol while ANT+ is a set of mutually agreed upon definitions for what the information sent over ANT represents.}technologies  for data transfer. Then the data are usually displayed on a screen of a smart device. Because of the limited performance of mobile devices only a basic data processing is provided. Advanced data processing is performed on a remote server that forms part of the three-layer architecture. There are few exceptions such as BlibCare tonometer equipped with WiFi. Then the captured data can be transferred directly by using e.g. a home WiFi network.
 
- 
+
 
 \section{\uppercase{Tested systems}}
 \label{tested_systems}
@@ -197,7 +197,7 @@ More specifically, odML is a~free form tree-like structure of sections, properti
 
 
 
- 
+
 \begin{lstlisting}[language=json,caption=blood pressure example, label=odml_example]
 {
      "metadata":{
@@ -292,7 +292,7 @@ Supported devices must enable either Bluetooth or ANT transfer. In the current i
 
 \subsection{Integration with EEGBase}
 
-The collected data can be transferred to any neuroinformatics database supporting the odML format. 
+The collected data can be transferred to any neuroinformatics database supporting the odML format.
 EEGBase is a neuroinformatics database that enables storing, uploading, downloading, and managing experimental data and metadata. Currently an advanced system of user templates stored in the odML format for different kinds of metadata is implemented. This template system enables users to easily define different kind of metadata for various experiments. Such a template can be defined according to different data coming from different sensors. That is why we selected EEGBase as a proof-of-concept implementation.
 
 Technically EEGBase provides a RESTful API containing methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered once when the user gets on-line. The user can also enforce the upload manually. Once the data are transferred to the server the odML document is stored in the Elasticsearch noSQL database and visualized. Figure~\ref{fig:EEGBase} shows visualization of data from Listing \ref{odml_example}.
@@ -306,7 +306,7 @@ Presented terminology covers basic set of sensors. Moreover it is easy extensibl
 
 \noindent
 We observed a diverse collection of available sensors on the market. These sensors vary e.g. in the used data format and data transfer protocol. We identified architectures reflecting the ways the data collected from sensors are managed. Then we selected the three-layer sensor architecture as the most suitable one for the long-term storage and processing of sensory data. Since sensors producers use their own systems and proprietary data formats, there are difficulties with reading, transferring and processing data. As a solution we presented a prototype of a custom terminology describing data collected from sensors. This terminology is implemented in the Android mobile system that serves as a proof-of-concept implementation supporting a~limited set of sensors. Then a~complete process from collecting data by the mobile system, storage of data in a universal format respecting presented ontology and final storage of data in EEGBase is outlined.
- 
+
 Our future work includes extension of the presented terminology to cover a~broader collection of health sensors. Then the extended mobile application will convert the data transferred using Bluetooth or ANT+ profiles to an odML document that satisfies this terminology. The described data can be fully managed in the systems such as EEGBase. A new version of EEGBase with the support of the presented terminology and description of the complete terminology itself will be released. This terminology may well serve to developers of similar systems when they want to collect and process data from health sensors.
 
 
