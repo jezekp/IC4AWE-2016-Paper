@@ -68,7 +68,7 @@
 
 \begin{document}
 
-\title{MoBio\subtitle{A mobile system for collecting data from sensors} }
+\title{MoBio\subtitle{A mobile application for collecting data from sensors} }
 
 \author{\authorname{Petr Je\v{z}ek\sup{1} and Roman Mou\v{c}ek\sup{1}}
 \affiliation{\sup{1}New Technologies for the Information Society,
@@ -115,7 +115,7 @@ The first category represents applications such as Endomondo or Runkeeper. The s
 
 Available tools and sensors are usually designed for one specific activity. They are able to record only limited variety of data. In addition, due to their proprietary structure they do not provide suitable interfaces for integration with other systems.
 
-As well as other communities neuroinformatics community identified problems with a long-term description, storage and management of experimental data/metadata \cite{CRCNS}. To facilitate solution of these difficulties International Neuroinformatics Coordinating Facility (INCF) \cite{INCF} covers activities for development of infrastructures and data standards in neuroinformatics community. Ontology for Experimental Neurophysiology (OEN) \cite{10.3389/conf.fninf.2014.18.00044} uses semantic web approach to describe terminology used in biomedical science and neuroscience.  Our research groups has developed a~system for long term storage and management of EEG/ERP experiments, EEGBase \cite{ISI:000306821100004}. A mobile EEGBase client \cite{10.3389/conf.fninf.2013.09.00046} is a supplementary Android tool that enables collecting experiments out of the laboratory and provides an on-line synchronization with EEGBase.
+As well as other communities neuroinformatics community identified problems with a long-term description, storage and management of experimental data/metadata \cite{CRCNS}. To facilitate solution of these difficulties International Neuroinformatics Coordinating Facility (INCF) \cite{INCF} covers activities for development of infrastructures and data standards in neuroinformatics community. Ontology for Experimental Neurophysiology (OEN) \cite{10.3389/conf.fninf.2014.18.00044} uses semantic web approach to describe terminology used in biomedical science and neuroscience. Our research groups developed a~system for long term storage and management of EEG/ERP experimental data and metadata, EEGBase \cite{ISI:000306821100004} that was recently extended by a system of templates suitable for storing various data and metadata structures. A mobile EEGBase client \cite{10.3389/conf.fninf.2013.09.00046} is a supplementary Android tool that enables collecting experiments out of the laboratory and provides an on-line synchronization with EEGBase.
 
 
 \section{\uppercase{Sensor Architectures and Data Transfer}}
@@ -192,7 +192,7 @@ The working group of the INCF Task Force on Electrophysiology\footnote{http://ww
 
 Figure~\ref{fig:Terminology} shows a~terminology based on the odML format and proposed for measurements of blood pressure, heart rate, glucose level, and weight scale including hydratation, muscle mass or bone mass. Listing~\ref{odml_example} shows a JSON representation of the blood pressure data structure, the section \emph{blood\_presure} with properties \textit{systolic\_pressure}, \textit{diastolic\_pressure}, \textit{mean\_pressure}, and \textit{heart\_rate} are defined. The document is simplified to keep readability. A~complete document contains a~complete set of properties describing the experiment. Because of the flexibility of the odML format, this terminology can be easily extended for other measurements.
 
-\begin{lstlisting}[language=json,caption=blood pressure example, label=odml_example]
+\begin{lstlisting}[language=json,caption=Blood pressure example, label=odml_example]
 {
      "metadata":{
          "odML":{
@@ -255,25 +255,22 @@ Figure~\ref{fig:Terminology} shows a~terminology based on the odML format and pr
 }
 \end{lstlisting}
 
-\subsection{Implementation}
+\subsection{Architecture and Implementation}
 
-To support the use of open source technologies we implemented the system for the Android platform that is available on a~large collection of devices including tablets and mobile phones. According to StatCounter\footnote{http://gs.statcounter.com} more than 60\% of devices are operated by Android. Moreover, there are other advantages to use this platform: a~lot of cheap devices on the market, large community of developers and easy publication of applications.
+To support the use of open source technologies we implemented the MoBio application for the Android platform that is available on a~wide range of devices including tablets and mobile phones  (according to StatCounter\footnote{http://gs.statcounter.com} more than 60\% of devices are operated by Android). Moreover, there are other advantages to use this platform, for example a~lot of cheap devices on the market, large community of developers, and easy publication of applications.
 
-The presented proof of concept implementation provides basic functionality including management of user accounts, support for a limited set of sensors, and visualization of stored data. Collected data are stored on the device SD card. They can be visualized directly on the mobile phone screen or transferred to the server and stored there for future processing.
+Figure \ref{fig:Architecture} shows the used architecture. The user collects data using a body sensor. The data are transferred to MoBio running on a smart phone using an~ANT+ or Bluetooth profile. Then MoBio transfers data expressed in an odML terminology to the server.
 
-The registration form includes both basic information about the user such as his/her name or email, and advanced information such as gender, weight, height, current fitness level, etc. All these data are required because they can affect results of measurements.
+The presented proof of concept implementation provides basic functionality including management of user accounts, support for a limited set of sensors, and visualization of stored data. Collected data are stored on a~SD card and can be visualized directly on the mobile phone screen or transferred to the server and stored there for future processing. The registration form includes both basic information about the user such as his/her name or email and advanced information such as gender, weight, height, current fitness level, etc. All these data are required because they can affect results of measurements.
 
-Figure \ref{fig:Architecture} shows the used architecture. The user collects data using a body sensor.  these data are transferred to MoBio running on a smart phone using a ANT+ or Bluetooth profile. Then MoBio transfers data expressed in an odML terminology to the server.
-
-
-Supported devices must enable either Bluetooth or ANT transfer. In the current implementation we tested a~limited set of devices produced by Garmin and Fora producers. When the device is paired, the user can transfer the data. Figure~\ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure~\ref{fig:capture_a} shows a list with a~paired device, the Garmin Heart Rate Sensor. The current heart rate is shown in Figure~\ref{fig:capture_b}. When the user starts a measurement, data are continuously stored in the device and the related heart rate chart is continuously plotted as shown in Figure~\ref{fig:capture_c}.
+Supported devices must enable either Bluetooth or ANT transfer. In the current implementation we successfully tested a~limited set of devices produced by Garmin and Fora producers. When the device is paired, the user can transfer data. Figure~\ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure~\ref{fig:capture_a} shows a~list with a~paired device, the Garmin Heart Rate Sensor. The current heart rate is shown in Figure~\ref{fig:capture_b}. When the user starts a measurement, data are continuously stored in the device and the related heart rate chart is continuously plotted as shown in Figure~\ref{fig:capture_c}.
 
  \begin{figure}
   %\vspace{-0.2cm}
 
   \centering
    {\epsfig{file = Materials/architecture.eps, width = 7cm}}
-  \caption{System Architecture}
+  \caption{MoBio System Architecture}
   \label{fig:Architecture}
  \end{figure}
 
@@ -286,7 +283,7 @@ Supported devices must enable either Bluetooth or ANT transfer. In the current i
 \hspace{10pt}\subfloat[Long term heart rate]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture2.PNG}\label{fig:capture_c}}
 \end{tabular}
 % figure caption is below the figure
-\caption{Mobile Application Preview}
+\caption{Mobio Application Preview}
 \label{fig:mob_app_prev}
 \end{figure*}
 
@@ -303,14 +300,13 @@ Supported devices must enable either Bluetooth or ANT transfer. In the current i
 
 \subsection{Integration with EEGBase}
 
-The collected data can be transferred to any neuroinformatics database supporting the odML format.
-EEGBase is a neuroinformatics database that enables storing, uploading, downloading, and managing experimental data and metadata. Currently an advanced system of user templates stored in the odML format for different kinds of metadata is implemented. This template system enables users to easily define different kind of metadata for various experiments. Such a template can be defined according to different data coming from different sensors. That is why we selected EEGBase as a proof-of-concept implementation.
+The collected data can be transferred to any storage system supporting the odML format. EEGBase, extended with an advanced system of user templates for storing various kinds of data and metadata in the odML format, was selected as a~storage. Any template can be defined according to data coming from a sensor and enriched by a~relevant set of metadata.
 
-Technically EEGBase provides a RESTful API containing methods for obtaining user's experiments and uploading newly collected data. The user can select an automatic data upload triggered once when the user gets on-line. The user can also enforce the upload manually. Once the data are transferred to the server the odML document is stored in the Elasticsearch noSQL database and visualized. Figure~\ref{fig:EEGBase} shows visualization of data from Listing \ref{odml_example}.
+Technically EEGBase provides a RESTful API containing methods for uploading newly collected data. The user can select an automatic data upload triggered when the user gets on-line. The user can also enforce the upload manually. Once the data are transferred to the server, the odML document is stored in the ElasticSearch noSQL database and visualized. Figure~\ref{fig:EEGBase} shows visualization of the data from Listing~\ref{odml_example}.
 
 
-\section{Discussions}
-Presented terminology covers basic set of sensors. Moreover it is easy extensible because of the open format odML. Its JSON serialization is suitable for wireless transfer because of low memory requirements in comparison with e. g. XML.  If we suppose a large sensor network (say 15 for human tracking) with 10 signals per sensor and say sampling frequency 50Hz, and if one sample produces 1B of the data then the one hour record produces about 27MB of data plus a few kilobytes of space for JSON elements. It will work without difficulties with regard to the capacity of todays SD cards. The data security is ensured by used protocols because both Bluetooth and ANT support the data transfer via a secured channel.
+\section{Discussion}
+The presented terminology covers a~basic set of data produced by typical sensors. Moreover, the terminology is easily extensible since the odML open format is used. Its JSON serialization is suitable for wireless transfer due to low memory requirements in comparison with XML. If we suppose a larger network of sensors for human tracking (e.g. 15 sensors, each sensor produces 10 signals with sampling frequency 50Hz, the sample size is 1B), then one hour recording produces approximately 27MB of data plus a few kilobytes for JSON elements. This data size is reasonable with regard to the current capacity of SD cards. The data security is ensured by the used protocols because both Bluetooth and ANT support data transfer via a~secured channel.
 
 \section{\uppercase{Conclusions}}
 \label{sec:conclusion}
