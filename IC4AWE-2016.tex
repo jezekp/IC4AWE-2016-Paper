@@ -216,21 +216,38 @@ Figure~\ref{fig:Terminology} shows a~terminology based on the odML format and pr
                            "content":60
                         },
                      },
+		     {
                         "name":"mean",
                         "value":{
                            "type":"int",
                            "content":70
                         },
                      },
+                  ],
+                  "type":"blood_preasure"
+               }
+            ],
+            "section":[
+               {
+                  "name":"heart_rate",
+                  "link":"blood_pressure",
+                  "property":[
                      {
-                        "name":"heart_rate",
+                        "name":"beat_count",
                         "value":{
                            "type":"int",
                            "content":52
                         },
                      },
+                     {
+                        "name":"beat_time",
+                        "value":{
+                           "type":"int",
+                           "content":1
+                        },
+                     },
                   ],
-                  "type":"blood_preasure"
+                  "type":"heart_rate"
                }
             ],
             "version":1
