@@ -68,7 +68,7 @@
 
 \begin{document}
 
-\title{MoBio\subtitle{A mobile system for collecting data from sensors} }
+\title{MoBio\subtitle{A mobile application for collecting data from sensors} }
 
 \author{\authorname{Petr Je\v{z}ek\sup{1} and Roman Mou\v{c}ek\sup{1}}
 \affiliation{\sup{1}New Technologies for the Information Society,
@@ -192,7 +192,7 @@ The working group of the INCF Task Force on Electrophysiology\footnote{http://ww
 
 Figure~\ref{fig:Terminology} shows a~terminology based on the odML format and proposed for measurements of blood pressure, heart rate, glucose level, and weight scale including hydratation, muscle mass or bone mass. Listing~\ref{odml_example} shows a JSON representation of the blood pressure data structure, the section \emph{blood\_presure} with properties \textit{systolic\_pressure}, \textit{diastolic\_pressure}, \textit{mean\_pressure}, and \textit{heart\_rate} are defined. The document is simplified to keep readability. A~complete document contains a~complete set of properties describing the experiment. Because of the flexibility of the odML format, this terminology can be easily extended for other measurements.
 
-\begin{lstlisting}[language=json,caption=blood pressure example, label=odml_example]
+\begin{lstlisting}[language=json,caption=Blood pressure example, label=odml_example]
 {
      "metadata":{
          "odML":{
@@ -238,25 +238,22 @@ Figure~\ref{fig:Terminology} shows a~terminology based on the odML format and pr
 }
 \end{lstlisting}
 
-\subsection{Implementation}
+\subsection{Architecture and Implementation}
 
-To support the use of open source technologies we implemented the system for the Android platform that is available on a~large collection of devices including tablets and mobile phones. According to StatCounter\footnote{http://gs.statcounter.com} more than 60\% of devices are operated by Android. Moreover, there are other advantages to use this platform: a~lot of cheap devices on the market, large community of developers and easy publication of applications.
+To support the use of open source technologies we implemented the MoBio application for the Android platform that is available on a~wide range of devices including tablets and mobile phones  (according to StatCounter\footnote{http://gs.statcounter.com} more than 60\% of devices are operated by Android). Moreover, there are other advantages to use this platform, for example a~lot of cheap devices on the market, large community of developers, and easy publication of applications.
 
-The presented proof of concept implementation provides basic functionality including management of user accounts, support for a limited set of sensors, and visualization of stored data. Collected data are stored on the device SD card. They can be visualized directly on the mobile phone screen or transferred to the server and stored there for future processing.
+Figure \ref{fig:Architecture} shows the used architecture. The user collects data using a body sensor. The data are transferred to MoBio running on a smart phone using an~ANT+ or Bluetooth profile. Then MoBio transfers data expressed in an odML terminology to the server.
 
-The registration form includes both basic information about the user such as his/her name or email, and advanced information such as gender, weight, height, current fitness level, etc. All these data are required because they can affect results of measurements.
+The presented proof of concept implementation provides basic functionality including management of user accounts, support for a limited set of sensors, and visualization of stored data. Collected data are stored on a~SD card and can be visualized directly on the mobile phone screen or transferred to the server and stored there for future processing. The registration form includes both basic information about the user such as his/her name or email and advanced information such as gender, weight, height, current fitness level, etc. All these data are required because they can affect results of measurements.
 
-Figure \ref{fig:Architecture} shows the used architecture. The user collects data using a body sensor.  these data are transferred to MoBio running on a smart phone using a ANT+ or Bluetooth profile. Then MoBio transfers data expressed in an odML terminology to the server.
-
-
-Supported devices must enable either Bluetooth or ANT transfer. In the current implementation we tested a~limited set of devices produced by Garmin and Fora producers. When the device is paired, the user can transfer the data. Figure~\ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure~\ref{fig:capture_a} shows a list with a~paired device, the Garmin Heart Rate Sensor. The current heart rate is shown in Figure~\ref{fig:capture_b}. When the user starts a measurement, data are continuously stored in the device and the related heart rate chart is continuously plotted as shown in Figure~\ref{fig:capture_c}.
+Supported devices must enable either Bluetooth or ANT transfer. In the current implementation we successfully tested a~limited set of devices produced by Garmin and Fora producers. When the device is paired, the user can transfer data. Figure~\ref{fig:mob_app_prev} shows a basic functionality provided to the logged user. Figure~\ref{fig:capture_a} shows a~list with a~paired device, the Garmin Heart Rate Sensor. The current heart rate is shown in Figure~\ref{fig:capture_b}. When the user starts a measurement, data are continuously stored in the device and the related heart rate chart is continuously plotted as shown in Figure~\ref{fig:capture_c}.
 
  \begin{figure}
   %\vspace{-0.2cm}
 
   \centering
    {\epsfig{file = Materials/architecture.eps, width = 7cm}}
-  \caption{System Architecture}
+  \caption{MoBio System Architecture}
   \label{fig:Architecture}
  \end{figure}
 
@@ -269,7 +266,7 @@ Supported devices must enable either Bluetooth or ANT transfer. In the current i
 \hspace{10pt}\subfloat[Long term heart rate]{\includegraphics[width = 4cm, height=6.0cm]{Materials/Capture2.PNG}\label{fig:capture_c}}
 \end{tabular}
 % figure caption is below the figure
-\caption{Mobile Application Preview}
+\caption{Mobio Application Preview}
 \label{fig:mob_app_prev}
 \end{figure*}
 
