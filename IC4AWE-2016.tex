@@ -289,7 +289,7 @@ Technically EEGBase provides a RESTful API containing methods for uploading newl
 
 
 \section{Discussion}
-Presented terminology covers basic set of sensors. Moreover it is easy extensible because of the open format odML. Its JSON serialization is suitable for wireless transfer because of low memory requirements in comparison with e. g. XML.  If we suppose a large sensor network (say 15 for human tracking) with 10 signals per sensor and say sampling frequency 50Hz, and if one sample produces 1B of the data then the one hour record produces about 27MB of data plus a few kilobytes of space for JSON elements. It will work without difficulties with regard to the capacity of todays SD cards. The data security is ensured by used protocols because both Bluetooth and ANT support the data transfer via a secured channel.
+The presented terminology covers a~basic set of data produced by typical sensors. Moreover, the terminology is easily extensible since the odML open format is used. Its JSON serialization is suitable for wireless transfer due to low memory requirements in comparison with XML. If we suppose a larger network of sensors for human tracking (e.g. 15 sensors, each sensor produces 10 signals with sampling frequency 50Hz, the sample size is 1B), then one hour recording produces approximately 27MB of data plus a few kilobytes for JSON elements. This data size is reasonable with regard to the current capacity of SD cards. The data security is ensured by the used protocols because both Bluetooth and ANT support data transfer via a~secured channel.
 
 \section{\uppercase{Conclusions}}
 \label{sec:conclusion}
