@@ -176,7 +176,7 @@ Having difficulties with closed-source dedicated devices we present a prototype 
 
 Since the aim of the application is to support large collections of sensors, it must store data in a flexible data format. Existing data formats are based on different levels of abstraction and include low-level binary formats, highly abstract implementation-independent data formats, and formats based on ontologies. We required a~format that provided a sufficient level of abstraction to be system independent, but also easy-to-use format having no specific demands on users. Having been involved in neuroinformatics community and having been persuaded that the similar solution could be used for other sensory data, we preferred open-source formats supported and accepted in this domain.
 
-The working group of the INCF Task Force on Electrophysiology\footnote{http://www.incf.org/programs/datasharing/ electrophysiology-task-force} introduced two approaches towards defining a standard, which may eventually be merged \cite{10.3389/conf.fninf.2013.09.00069}. The first one uses the Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF, the  specialized HDF5 format for electrophysiology. The NIX format~\cite{Stoewer:2014} provides a data model for storing experimental data in HDF5, together with metadata in the odML format~\cite{10.3389/fninf.2011.00016}. We selected odML as a suitable format for the presented application because of its platform-independence, simplicity, and human-readability. Moreover, it ensures a compatibility with other systems developed in neuroinformatics community, for example \cite{10.3389/conf.fninf.2014.18.00029}, \cite{10.3389/conf.fninf.2014.18.00053}, and~\cite{10.3389/conf.fninf.2013.09.00025}.
+The working group of the INCF Task Force on Electrophysiology\footnote{http://www.incf.org/programs/datasharing/ electrophysiology-task-force} introduced two approaches towards defining a standard, which may eventually be merged \cite{10.3389/conf.fninf.2013.09.00069}. The first one uses the Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF, the  specialized HDF5 format for electrophysiology. The NIX format~\cite{Stoewer:2014} provides a data model for storing experimental data in HDF5, together with metadata in the odML format~\cite{10.3389/fninf.2011.00016}. We selected odML (odML is a~free form tree-like structure of sections, properties and values) as a suitable format for the presented application because of its platform-independence, simplicity, and human-readability. Moreover, it ensures a compatibility with other systems developed in neuroinformatics community, for example \cite{10.3389/conf.fninf.2014.18.00029}, \cite{10.3389/conf.fninf.2014.18.00053}, and~\cite{10.3389/conf.fninf.2013.09.00025}.
 
 \begin{figure}
   %\vspace{-0.2cm}
@@ -190,13 +190,7 @@ The working group of the INCF Task Force on Electrophysiology\footnote{http://ww
 
 \subsection{Terminology}
 
-Figure \ref{fig:Terminology} shows the proposed terminology. Currently we support sensors for measurements of Blood Pressure, Heart Rate, Gluccose Level and Weight Scale including smart scales that measure e. g. hydratation, muscle mass or bone mass. Because of the flexibility of the odML format, this terminology can be easily extended for another set of sensors.
-
-
-More specifically, odML is a~free form tree-like structure of sections, properties and values that  If we store e.g. data from a blood pressure sensor, we define the section \emph{blood\_presure} with several properties: \textit{systolic\_pressure}, \textit{diastolic\_pressure}, \textit{mean\_pressure}, and \textit{heart\_rate}. Listing \ref{odml_example} shows a JSON representation of the proposed data structure. The document is simplified to keep readability. A~complete document contains a~complete set of properties describing the experiment.
-
-
-
+Figure~\ref{fig:Terminology} shows a~terminology based on the odML format and proposed for measurements of blood pressure, heart rate, glucose level, and weight scale including hydratation, muscle mass or bone mass. Listing~\ref{odml_example} shows a JSON representation of the blood pressure data structure, the section \emph{blood\_presure} with properties \textit{systolic\_pressure}, \textit{diastolic\_pressure}, \textit{mean\_pressure}, and \textit{heart\_rate} are defined. The document is simplified to keep readability. A~complete document contains a~complete set of properties describing the experiment. Because of the flexibility of the odML format, this terminology can be easily extended for other measurements.
 
 \begin{lstlisting}[language=json,caption=blood pressure example, label=odml_example]
 {
